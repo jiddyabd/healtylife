@@ -1,0 +1,74 @@
+.bg-nav{
+    background-color: #fff;
+}
+.img-brand{
+    width: 100px;
+}
+
+.block-langganan{
+    background-color: gainsboro;
+    color: #003142;
+}
+
+.btn-ijo{
+    background-color: #003142;
+    color: white;
+}
+
+.btn-ijo:hover{
+    color: white;
+}
+
+.input-langganan{
+    width: 50%;
+    margin: auto;
+}
+
+.dropdown:hover .dropdown-menu{
+    display: block;
+}
+.dropdown-kategori,.dropdown-login{
+    min-width: max-content;
+    width:100%;
+    overflow: hidden;
+}
+.lupa-sandi:hover{
+    color: #003142;
+}
+.bg-gainsboro{
+    background-color: gainsboro;
+}
+
+#box{
+    width:450px;
+    background: white;
+    border:solid 1px rgb(218, 193, 193);
+    margin-top: 100px;
+    margin-bottom: 60px;
+    margin-left: 355px;
+    position: center;
+    overflow: hidden;
+}
+.gambaritem{
+    width: 350px;
+}
+.text-oren{
+    color: coral;
+}
+.item-card:hover{
+    text-decoration: none;
+    
+}
+.card:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+footer{
+    background-color: #003142;
+    color: white;
+}
+
+footer a, footer a:hover{
+    color: white;
+    text-decoration: none;
+}
