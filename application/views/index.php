@@ -5,7 +5,7 @@
       <div class="container">
         <div class="row">
             <div class="intro-text col-md-2">
-              <a class="btn btn-xl text-uppercase js-scroll-trigger" style="border-color : #fff; background : #464343" href="<?php echo base_url('pasien/landing_pasien'); ?>">Pasien</a>
+              <a class="btn btn-xl text-uppercase js-scroll-trigger" style="border-color : #fff; background : #464343" href="<?php echo base_url()?>pasien/landing_pasien">Pasien</a>
             </div>
             <div class="intro-text col-md-2">
               <!-- <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="">Pelanggan</a> -->
@@ -31,7 +31,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="http://localhost/healtylife/">
-          <img class="img-fluid" src="http://localhost/telkomedika/assets/index/img/logo.png" width=80px alt="">
+          <img class="img-fluid" src="http://localhost/healtylife/assets/index/img/logo.png" width=80px alt="">
           &nbsp;ImuniHealth
         </a>
       </div>
