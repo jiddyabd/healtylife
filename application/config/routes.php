@@ -52,3 +52,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'index/utama';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+//$route['pasien'] = 'pasien/landing_pasien';
+// $route['index'] = 'Index/utama';

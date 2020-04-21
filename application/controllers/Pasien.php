@@ -22,14 +22,14 @@ class Pasien extends CI_Controller {
     );
 
     public function landing_pasien(){
-        $data['title'] = "Telkomedika - Masuk ke Pasien";
+        $data['title'] = "Imunihealth - Masuk ke Pasien";
         $this->load->view('templates/header_login',$data);
         $this->load->view('login_pasien');
         $this->load->view('templates/footer_login');
     }
 
     public function home(){
-        $data['title'] = 'Telkomedika - Beranda Pasien';
+        $data['title'] = 'Imunihealth - Beranda Pasien';
         $this->load->view('templates/header_home.php',$data);
         $this->load->view('home_pasien.php');
         $this->load->view('templates/footer_index.php');
@@ -70,7 +70,7 @@ class Pasien extends CI_Controller {
                 "foto" => $result->foto
             );
             $this->session->set_userdata('datauser', $sessionarray);
-            redirect("pasien/home");
+            redirect("pasien/profil");
         }else{
             $this->session->set_flashdata('success', "Username atau Password salah!");
             redirect("pasien/landing_pasien");
@@ -86,7 +86,7 @@ class Pasien extends CI_Controller {
         $this->form_validation->set_rules('notelepon_pasien','No Telepon', 'required');
 
         if ($this->form_validation->run() == FALSE){
-            $data['title'] = "Telkomedika - Registrasi Pasien";
+            $data['title'] = "Imunihealth - Registrasi Pasien";
             $this->load->view('templates/header_login',$data);
             $this->load->view('register_pasien');
             $this->load->view('templates/footer_login');
@@ -111,7 +111,7 @@ class Pasien extends CI_Controller {
     }
 
     public function profil(){
-        $data['title'] = 'Telkomedika - Profil';
+        $data['title'] = 'Imunihealth - Profil';
         $data_pasien = $this->Pasien_model->GetAllPasien();
 
         $this->load->view('templates/header_home',$data);

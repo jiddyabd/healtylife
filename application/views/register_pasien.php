@@ -10,7 +10,7 @@
 <div style="background-image: url(<?php echo base_url('assets/gambar/bg_overlay.jpg'); ?>); width: 100%; height: 100%; position: fixed; top:0; background-size:cover;">
 </div>
     <div style="width: 450px; background: white; margin: 90px auto; padding: 10px 20px 20px; border-radius: 6px; position: relative; position : relative">
-        <h2 style="text-align: center; font-style: bold;">Telkomedika</h4>
+        <h2 style="text-align: center; font-style: bold;">Imunihealth</h4>
         <h5 style="text-align: center; margin-bottom: 20px;">Register Form - Pasien</h5>
 
         <?php
