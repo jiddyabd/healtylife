@@ -1,15 +1,20 @@
 <!-- Footer -->
-<footer class="page-footer font-small blue fixed-bottom" style='background-color: #262828 !important'>
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">
-    <h6>© 2020 Copyright: JarJid Corp</h6>
+<div class="container-fluid" style="height: 40px; background-color: #f8fbf9;" >
+  <div class="d-flex">
+    <div class="mr-auto" style="margin-left: 5%">
+      <p>© 2020 Copyright: JarJid Corp</p>
+    </div>
+    <div style="padding-right: 5%">
+      <span class="twitter-icon social-media-icon" >
+        <i class="fa fa-twitter"></i>
+      </span>
+      <span class="facebook-icon social-media-icon" >
+        <i class="fa fa-facebook"></i>
+      </span>
+      <span class="instagram-icon social-media-icon" >
+        <i class="fa fa-instagram"></i>
+      </span>
+    </div>
   </div>
-  <!-- Copyright -->
-
-  <!-- Toast -->
-  <script>
-    $('.toast').toast('show')
-  </script>
-</footer>
+</div>
 <!-- Footer -->
