@@ -7,6 +7,21 @@
             <img src="<?= base_url() ?>assets/gambar/logo.png" alt="logo" style="width: 200px; display: block; background-position: 50%!important; background-size: 100px 33px!important;">
         </a>
     </nav>
+    <div aria-live="polite" aria-atomic="true">
+        <div data-delay="10000" class="toast" style="position: absolute; top: 150px; right: 50px;">
+            <div class="toast-header">
+            <img src="..." class="rounded mr-2" alt="...">
+            <strong class="mr-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="toast-body">
+            Hello, world! This is a toast message.
+            </div>
+        </div>
+    </div>
 
     <div style="width: 350px; background: white; margin: 170px auto; padding: 30px 20px; border-radius: 6px; fixed">
         <h2 style="text-align: center; font-style: bold;">Login Form</h2>
@@ -56,3 +71,7 @@
     </div>
     <br/>
 </div> 
+
+<script>
+
+</script>

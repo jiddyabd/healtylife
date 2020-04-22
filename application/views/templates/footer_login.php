@@ -7,5 +7,9 @@
   </div>
   <!-- Copyright -->
 
+  <!-- Toast -->
+  <script>
+    $('.toast').toast('show')
+  </script>
 </footer>
 <!-- Footer -->

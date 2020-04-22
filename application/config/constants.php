@@ -83,3 +83,24 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+/**
+ * Custom constant for webpro final task
+ */
+defined('TEMPLATE_DIR')   OR define('TEMPLATE_DIR', 'templates/');
+defined('TEMPLATE_BASE')   OR define('TEMPLATE_BASE', 'base.php');
+// //Templates before login
+// defined('TEMPLATE_HEADER_LANDING')   OR define('TEMPLATE_HEADER_LANDING', 'header_index.php');
+// defined('TEMPLATE_FOOTER_LANDING')   OR define('TEMPLATE_FOOTER_LANDING', 'footer_index.php');
+// defined('TEMPLATE_SIDEBAR_LANDING')   OR define('TEMPLATE_SIDEBAR_LANDING', 'sidebar_index.php');
+defined('TEMPLATE_HEADER_LANDING')   OR define('TEMPLATE_HEADER_LANDING', 'header_login.php');
+defined('TEMPLATE_FOOTER_LANDING')   OR define('TEMPLATE_FOOTER_LANDING', 'footer_login.php');
+defined('TEMPLATE_SIDEBAR_LANDING')   OR define('TEMPLATE_SIDEBAR_LANDING', 'sidebar_login.php');
+//Templates after login
+defined('TEMPLATE_HEADER_LOGGED_IN')   OR define('TEMPLATE_HEADER_LOGGED_IN', 'header_home.php');
+defined('TEMPLATE_FOOTER_LOGGED_IN')   OR define('TEMPLATE_FOOTER_LOGGED_IN', 'footer_home.php');
+defined('TEMPLATE_SIDEBAR_LOGGED_IN')   OR define('TEMPLATE_SIDEBAR_LOGGED_IN', 'sidebar_home.php');
+
+//Templates name
+defined('LANDING_LAYOUT')   OR define('LANDING_LAYOUT', 'landing_layout');
+defined('LOGGEDIN_LAYOUT')   OR define('LOGGEDIN_LAYOUT', 'logged_in');
