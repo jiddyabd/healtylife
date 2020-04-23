@@ -91,7 +91,7 @@
             <span class="nav-link">|</span>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link" href="<?php echo base_url('pasien/PilihJadwalPeriksa'); ?>" style="color:white">Daftar Appointment</a>
+                <a class="nav-link" href="<?php echo base_url('pasien/daftar_appointment'); ?>" style="color:white">Daftar Appointment</a>
             </li>
             <li class="nav-item">
                 <span class="nav-link">|</span>

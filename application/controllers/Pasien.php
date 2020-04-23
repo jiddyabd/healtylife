@@ -204,5 +204,25 @@ class Pasien extends CI_Controller {
         $this->session->sess_destroy();
         redirect('index/utama');
     }
+
+
+    //Add Jadwal Appointment
+    public function appointment(){
+        $data['title'] = "Jadwal Appointment";
+        $data_pasien = null; //TODO
+        $this->load->view('templates/header_home',$data);
+        $this->load->view('pages/pasien/pasien_appointment',['data' => $data_pasien]);
+        $this->load->view('templates/footer_index');
+    }
+
+
+    public function daftar_appointment(){
+        $data['title'] = "Jadwal Appointment";
+        $data_pasien = null; //TODO
+        $this->load->view('templates/header_home',$data);
+        $this->load->view('pages/pasien/daftar_appointment',['data' => $data_pasien]);
+        $this->load->view('templates/footer_index');
+
+    }
 }
 ?>
