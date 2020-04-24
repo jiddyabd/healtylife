@@ -1,14 +1,11 @@
 <?php
 
-class Pasien extends CI_Controller {
+class Pasien extends Core_Controller {
     public function __construct()
     {
 		parent::__construct();
-        $this->load->helper('url_helper');
         $this->load->model('Pasien_model');
         // $this->load->model('Dokter_model');
-        $this->load->library('form_validation');
-        $this->load->library('session');
     }
     
     // public function index(){
@@ -22,17 +19,15 @@ class Pasien extends CI_Controller {
     );
 
     public function landing_pasien(){
-        $data['title'] = "Imunihealth - Masuk ke Pasien";
-        $this->load->view('templates/header_login',$data);
-        $this->load->view('login_pasien');
-        $this->load->view('templates/footer_login');
+        $this->view_page = 'login_pasien';
+        $this->view_title ="Imunihealth - Masuk ke Pasien";
+        $this->show_layout(LANDING_LAYOUT);
     }
 
     public function home(){
-        $data['title'] = 'Imunihealth - Beranda Pasien';
-        $this->load->view('templates/header_home.php',$data);
-        $this->load->view('home_pasien.php');
-        $this->load->view('templates/footer_index.php');
+        $this->view_page = 'home_pasien';
+        $this->view_title = 'Imunihealth - Beranda Pasien';
+        $this->show_layout(LANDING_LAYOUT);
     }
 
     public function login_pasien(){
@@ -215,14 +210,12 @@ class Pasien extends CI_Controller {
         $this->load->view('templates/footer_index');
     }
 
-
     public function daftar_appointment(){
         $data['title'] = "Jadwal Appointment";
         $data_pasien = null; //TODO
         $this->load->view('templates/header_home',$data);
         $this->load->view('pages/pasien/daftar_appointment',['data' => $data_pasien]);
         $this->load->view('templates/footer_index');
-
     }
 }
 ?>
