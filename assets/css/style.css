@@ -1,3 +1,122 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
 .badge {
 	margin-left: 3px;
+}
+
+.navbar-red {
+	background-color: #b01116;
+	color: #fff;
+}
+.navbar-red .navbar-brand {
+	color: #fff;
+}
+.navbar-red .navbar-nav > li > a {
+	color: #fff;
+}
+.navbar-red .navbar-nav > li > a:hover,
+.navbar-red .navbar-nav > li > a:focus {
+	background-color: #ee1c25;
+	color: #fff;
+}
+.box {
+	margin-top: 80px;
+	margin-bottom: 20px;
+	padding: 10px;
+	background-color: #fff	;
+	border-radius: 5px;
+}
+body {
+	background-color: #D8D8D8;
+}
+/* img {
+	width: 70px;
+	margin-right: 10px;
+} */
+.foto{
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+}
+.profile-header {
+	background-color: #C58200;
+	padding: 24px;
+	text-align: center;
+	margin-top: 50px;
+}
+
+/* Header Login */
+button[type=submit]{
+	background: #badc58;
+	color: white;
+	font-size: 11pt;
+	width: 100%;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+}
+button[type=submit]:hover{
+	cursor: pointer;
+	background: #46de4b;
+}
+input[type=submit]{
+	background: #badc58;
+	color: white;
+	font-size: 11pt;
+	width: 100%;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+}
+input[type=submit]:hover{
+	cursor: pointer;
+	background: #46de4b;
+}
+/* html,body {
+	margin:0;
+	padding:0;
+	height:100%;
+}
+.content {
+	padding:10px;
+	padding-bottom:80px;
+} */
+/* .footerbar {
+	width:100%;
+	height:80px;
+	position: relative;
+	bottom:0;
+	left:0;
+	flex-shrink: 0;
+} */
+
+
+/* Login Screen */
+.social-media-icon{
+	padding-right: 20px;
+	font-size: 20px;
+	cursor: pointer;
+}
+.twitter-icon:hover{
+	color: #00aced;
+}
+
+.facebook-icon:hover{
+	color: #3b5998;
+}
+
+.instagram-icon:hover{
+	color: #517fa4;
+}
+
+.login-img{
+	position:relative;
+	top:50%;
+	left:50%;
+	transform:translate(-50%, -50%);
+	margin-left: 5%;
+	margin-right: 10%;
 }
