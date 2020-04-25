@@ -97,10 +97,21 @@ defined('TEMPLATE_HEADER_LANDING')   OR define('TEMPLATE_HEADER_LANDING', 'heade
 defined('TEMPLATE_FOOTER_LANDING')   OR define('TEMPLATE_FOOTER_LANDING', 'footer_login.php');
 defined('TEMPLATE_SIDEBAR_LANDING')   OR define('TEMPLATE_SIDEBAR_LANDING', 'sidebar_login.php');
 //Templates after login
-defined('TEMPLATE_HEADER_LOGGED_IN')   OR define('TEMPLATE_HEADER_LOGGED_IN', 'header_home.php');
-defined('TEMPLATE_FOOTER_LOGGED_IN')   OR define('TEMPLATE_FOOTER_LOGGED_IN', 'footer_home.php');
-defined('TEMPLATE_SIDEBAR_LOGGED_IN')   OR define('TEMPLATE_SIDEBAR_LOGGED_IN', 'sidebar_home.php');
+defined('TEMPLATE_HEADER_LOGGED_IN')   OR define('TEMPLATE_HEADER_LOGGED_IN', 'header.php');
+defined('TEMPLATE_FOOTER_LOGGED_IN')   OR define('TEMPLATE_FOOTER_LOGGED_IN', 'footer.php');
+defined('TEMPLATE_SIDEBAR_LOGGED_IN')   OR define('TEMPLATE_SIDEBAR_LOGGED_IN', 'sidebar.php');
 
 //Templates name
 defined('LANDING_LAYOUT')   OR define('LANDING_LAYOUT', 'landing_layout');
 defined('LOGGEDIN_LAYOUT')   OR define('LOGGEDIN_LAYOUT', 'logged_in');
+
+//Pages DIR 
+defined('DIR_PETUGAS_PAGES')   OR define('DIR_PETUGAS_PAGES', 'pages/petugas');
+defined('DIR_DOKTER_PAGES')   OR define('DIR_DOKTER_PAGES', 'pages/dokter');
+defined('DIR_PASIEN_PAGES')   OR define('DIR_PASIEN_PAGES', 'pages/pasien');
+
+
+//Roles
+defined('PETUGAS')   OR define('PETUGAS', 'petugas');
+defined('DOKTER')   OR define('DOKTER', 'dokter');
+defined('PASIEN')   OR define('PASIEN', 'pasien');

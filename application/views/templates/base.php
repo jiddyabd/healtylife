@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title><?= $view_title ?></title>
+        <title><?= $_view_title ?></title>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="<?=base_url('assets/').'css/bootstrap.min.css'?>">
 
@@ -45,16 +45,29 @@
         <link rel="stylesheet" href="<?= base_url('assets/').'css/style.css'?>"/>
 
         <!-- Inject CSS -->
-        <?php if($show_custom_page_css){?>
-            <link rel="stylesheet" href="<?= base_url('assets/').'css/pages/'.$page_name.'.css'?>"/>
+        <?php if($_show_custom_page_css){?>
+            <link rel="stylesheet" href="<?= base_url('assets/').'css/pages/'.$_page_name.'.css'?>"/>
         <?php }?>
 
     </head>
     <body>
-        <?php if(!empty($header) && $header) { echo $header; }?>
-        <?php //if(!empty($sidebar) && $sidebar) { echo $sidebar; }?>
-        <?php if(!empty($page) && $page) { echo $page; }?>
-        <?php if(!empty($footer) && $footer) { echo $footer; }?>
+        <?php if(!empty($sidebar) && $sidebar) { echo $sidebar; }?>
+
+        <?php if(!empty($sidebar) && $sidebar) {?>
+            <!-- Use main content wrapper if sidebar shown -->
+            <div class="main-content">
+                <?php if(!empty($header) && $header) { echo $header; }?>
+                <div class="page-content">
+                    <?php if(!empty($_page) && $_page) { echo $_page; }?>
+                </div>
+                <?php if(!empty($footer) && $footer) { echo $footer; }?>
+            </div>
+        <?php } else{
+            if(!empty($header) && $header) { echo $header; }
+            if(!empty($_page) && $_page) { echo $_page; }
+            if(!empty($footer) && $footer) { echo $footer; }
+        }
+        ?>
     </body>
 
     <!-- Showing toast scripts -->

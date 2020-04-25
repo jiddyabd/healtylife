@@ -16,8 +16,6 @@ class Core_Controller extends CI_Controller {
     protected $show_toast = false;
     protected $toast;
 
-    
-
     /**
      * Core Controller for this webpro final task
      * Should handle these things
@@ -53,11 +51,13 @@ class Core_Controller extends CI_Controller {
             $this->view_data = $data;
         }
 
+
+
         $view_layout = $this->get_selected_layout($selected_layout);
-        $view_layout['page_name'] = str_replace('.php', '', $this->view_page);
-        $view_layout['page'] =  $this->load->view($this->view_page, $this->view_data, true);
-        $view_layout['view_title'] = $this->view_title;
-        $view_layout['show_custom_page_css'] = $this->show_custom_page_css;
+        $view_layout['_page_name'] = str_replace('.php', '', $this->view_page);
+        $view_layout['_page'] =  $this->load->view($this->view_page, $this->view_data, true);
+        $view_layout['_view_title'] = $this->view_title;
+        $view_layout['_show_custom_page_css'] = $this->show_custom_page_css;
 
         $this->load->view(TEMPLATE_DIR.TEMPLATE_BASE, $view_layout);
     }
@@ -81,12 +81,30 @@ class Core_Controller extends CI_Controller {
 
     private function load_default_layout(){
         return [
-            // "sidebar" => $this->load->view(TEMPLATE_DIR.TEMPLATE_SIDEBAR_LOGGED_IN, $this->view_data, true), //TODO
+            "sidebar" => $this->get_sidebar_by_role(), //TODO
             "footer" => $this->load->view(TEMPLATE_DIR.TEMPLATE_FOOTER_LOGGED_IN, $this->view_data, true), 
             "header" =>  $this->load->view(TEMPLATE_DIR.TEMPLATE_HEADER_LOGGED_IN, $this->view_data, true)
         ];
     }
+
+    private function get_sidebar_by_role(){
+        $role = $this->session->userdata("role");
+        switch($role){
+            case DOKTER: return $this->load->view(TEMPLATE_DIR.TEMPLATE_SIDEBAR_DOKTER, $this->view_data, true); break;
+            case PASIEN: return $this->load->view(TEMPLATE_DIR.TEMPLATE_SIDEBAR_PASIEN, $this->view_data, true); break;
+            case PETUGAS: return $this->load->view(TEMPLATE_DIR.TEMPLATE_SIDEBAR_PETUGAS, $this->view_data, true); break;
+            default: return $this->load->view(TEMPLATE_DIR.TEMPLATE_SIDEBAR_LOGGED_IN, $this->view_data, true); break;
+        }
+        return $this->load->view(TEMPLATE_DIR.TEMPLATE_SIDEBAR_LOGGED_IN);
+    }
     //#end layout func
+    
+    //Load default data
+    private function set_session_view_data(){
+        return [
+
+        ];
+    }
 
     /**
      * Toast
@@ -103,4 +121,35 @@ class Core_Controller extends CI_Controller {
     //#end toast func
 
     //Utilities
+    protected function is_user_can_access($current_pages){
+        $role = $this->session->userdata("role");
+        switch($role){
+            case DOKTER: if($current_pages == DOKTER) return true; break;
+            case PASIEN: if($current_pages == PASIEN) return true; break;
+            case PETUGAS: if($current_pages == PETUGAS) return true; break;
+            default: return false;
+        }
+        return false;
+    }
+
+    protected function redirect_to_home(){
+        $role = $this->session->userdata("role");
+        switch($role){
+            case DOKTER: 
+                redirect('dokter/home');
+            break;
+            case PASIEN:
+                redirect('pasien/home');
+            break;
+            case PETUGAS: 
+                redirect('petugas/dashbaord');
+            break;
+        }
+
+        //If not above then force to logged out
+        $this->session->unset_userdata('datauser');
+        $this->session->sess_destroy();
+        redirect('/');
+    }
+
 }

@@ -2,7 +2,13 @@
 
 class Petugas extends Core_Controller {
     public function __construct(){
-		parent::__construct();
+        parent::__construct();
+
+        //Uncomment for role checking
+        // if(!$this->is_user_can_access(PETUGAS)){
+        //     $this->redirect_to_home();
+        // }
+
         $this->load->model('Pasien_model');
         // $this->load->model('Dokter_model');
         // $this->load->model('Obat_model');
@@ -13,10 +19,13 @@ class Petugas extends Core_Controller {
 
     public function index(){
         //TODO Just load the dashboard
+        $this->view_title = 'Imunihealth - Dashboard Petugas';
+        $this->view_page = DIR_PETUGAS_PAGES.'/dashboard';
+        $this->show_layout(LOGGEDIN_LAYOUT);
     }
 
     public function dashboard(){
-
+        $this->index();
     }
 
     public function view_pasien(){
@@ -42,6 +51,7 @@ class Petugas extends Core_Controller {
     public function edit_jadwal_dokter(){
 
     }
-    
+
+
 }
 ?>

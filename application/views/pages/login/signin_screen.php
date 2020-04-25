@@ -1,4 +1,4 @@
-<div style="padding: 35px; background-color: #f8fbf9; min-height: calc(100vh - 144px);">
+<div style="padding: 35px; background-color: #f8fbf9; min-height: calc(100vh - 145px);">
     <div class="row">
         <div class="col-md-7">
             <div class="login-img">
