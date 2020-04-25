@@ -142,14 +142,14 @@ class Core_Controller extends CI_Controller {
                 redirect('pasien/home');
             break;
             case PETUGAS: 
-                redirect('petugas/dashbaord');
+                redirect('petugas/dashboard');
             break;
         }
 
         //If not above then force to logged out
         $this->session->unset_userdata('datauser');
         $this->session->sess_destroy();
-        redirect('/');
+        redirect('/login/sign_in');
     }
 
 }

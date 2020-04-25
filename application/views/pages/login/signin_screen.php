@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-5" style="padding-left: 50px;">
             <div  style="margin-right: 15%; margin-top: 10%">
-                <h3>Welcome to <span style="color: #008037">Healtylife</span></h3>
+                <h3>Welcome to <span style="color: #008037">Immunihealth</span></h3>
                 <p>Keeping your healthy behaviour is just a single step away. With a single sign-in you can keep your future healtier than ever. 💊</p>
                 <form style="margin-top: 50px; margin-bottom: 15px">
                     <div class="form-group">

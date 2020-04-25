@@ -143,13 +143,14 @@ input[type=submit]:hover{
 }
 
 .sidebar-header{
+	padding-top:15px !important;
+	padding-bottom: 15px !important;
     height: 78px;
     text-align: center;
 }
 
 .navbar-vertical{
     padding-top: 0;
-
     border-width: 0 0 1px 0;
     border-style: solid;
     box-shadow: 0 0 2rem 0 rgba(136, 152, 170, .15);
@@ -159,6 +160,13 @@ input[type=submit]:hover{
 /* Navbar Top */
 #_header-navbar{
 	background-color: #097119 !important;
+	border-color: rgba(255,255,255,.08)!important;
+	border-bottom: 1px solid #e9ecef!important;
+	border-color: rgba(255,255,255,.08)!important;
+    border-top-color: rgba(255, 255, 255, 0.08) !important;
+    border-right-color: rgba(255, 255, 255, 0.08) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+    border-left-color: rgba(255, 255, 255, 0.08) !important;
 }
 
 #_header-navbar > .nav > .nav-item > .nav-link{
@@ -166,12 +174,29 @@ input[type=submit]:hover{
 }
 
 
+/* Page title */
+.page-title-container{	
+	background-color: #097119 !important;
+}
+
+.page-title{
+	padding-top: 24px;
+	padding-bottom: 24px;
+}
+
+.page-title-container > .container-fluid{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
 /* Pages content */
 .main-content{
 	margin-left: 250px;
 }
 
 .main-content > #_header-navbar{
+	padding-bottom: 15px !important;
+	padding-top: 15px !important;
 	padding-right: 30px!important;
     padding-left: 30px!important;
 }
@@ -179,4 +204,43 @@ input[type=submit]:hover{
 .page-content{
 	padding-right: 30px!important;
     padding-left: 30px!important;
+}
+
+.padding-bottom-45{
+	padding-bottom: 4.5rem !important;
+}
+.margin-top--45{
+	margin-top: -4.5rem !important;
+}
+
+/* Card */
+.card-container{
+	margin-bottom: 30px;
+    border: 0;
+	box-shadow: 0 0 2rem 0 rgba(136,152,170,.15);
+	position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    border: 1px solid rgba(0,0,0,.05);
+    border-radius: .375rem;
+    background-color: #fff;
+    background-clip: border-box;
+}
+
+.card-header{
+	margin-bottom: 0;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+    background-color: #fff;
+}
+
+.form-divide-title{
+    color: #8898aa!important;
+    text-transform: uppercase;
+    font-size: .75rem;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    letter-spacing: .04em;
 }

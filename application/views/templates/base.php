@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+        <link rel="icon" href="<?=base_url('assets/').'img/logo_xs.png'?>" type="image/icon type">
         <title><?= $_view_title ?></title>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="<?=base_url('assets/').'css/bootstrap.min.css'?>">
@@ -55,9 +56,19 @@
 
         <?php if(!empty($sidebar) && $sidebar) {?>
             <!-- Use main content wrapper if sidebar shown -->
+
             <div class="main-content">
                 <?php if(!empty($header) && $header) { echo $header; }?>
-                <div class="page-content">
+                
+                <!-- Page title  -->
+                <div class="page-content page-title-container padding-bottom-45">
+                    <div class="container-fluid page-title">
+                        <h5 style="color: #fff">Page title</h5>
+                    </div>
+                </div>
+                <!-- End Page title -->
+
+                <div class="page-content margin-top--45">
                     <?php if(!empty($_page) && $_page) { echo $_page; }?>
                 </div>
                 <?php if(!empty($footer) && $footer) { echo $footer; }?>

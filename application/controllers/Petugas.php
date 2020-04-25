@@ -4,10 +4,11 @@ class Petugas extends Core_Controller {
     public function __construct(){
         parent::__construct();
 
+        $this->session->set_userdata("role", PETUGAS); // For development
         //Uncomment for role checking
-        // if(!$this->is_user_can_access(PETUGAS)){
-        //     $this->redirect_to_home();
-        // }
+        if(!$this->is_user_can_access(PETUGAS)){
+            $this->redirect_to_home();
+        }
 
         $this->load->model('Pasien_model');
         // $this->load->model('Dokter_model');

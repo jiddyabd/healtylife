@@ -99,7 +99,10 @@ defined('TEMPLATE_SIDEBAR_LANDING')   OR define('TEMPLATE_SIDEBAR_LANDING', 'sid
 //Templates after login
 defined('TEMPLATE_HEADER_LOGGED_IN')   OR define('TEMPLATE_HEADER_LOGGED_IN', 'header.php');
 defined('TEMPLATE_FOOTER_LOGGED_IN')   OR define('TEMPLATE_FOOTER_LOGGED_IN', 'footer.php');
-defined('TEMPLATE_SIDEBAR_LOGGED_IN')   OR define('TEMPLATE_SIDEBAR_LOGGED_IN', 'sidebar.php');
+//Sidebar by role
+defined('TEMPLATE_SIDEBAR_DOKTER')   OR define('TEMPLATE_SIDEBAR_DOKTER', 'sidebar_dokter.php');
+defined('TEMPLATE_SIDEBAR_PETUGAS')   OR define('TEMPLATE_SIDEBAR_PETUGAS', 'sidebar_petugas.php');
+defined('TEMPLATE_SIDEBAR_PASIEN')   OR define('TEMPLATE_SIDEBAR_USER', 'sidebar_pasien.php');
 
 //Templates name
 defined('LANDING_LAYOUT')   OR define('LANDING_LAYOUT', 'landing_layout');
