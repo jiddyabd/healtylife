@@ -4,8 +4,6 @@ class Petugas extends Core_Controller {
     public function __construct(){
         parent::__construct();
 
-        $this->session->set_userdata("role", PETUGAS); // For development
-        //Uncomment for role checking
         if(!$this->is_user_can_access(PETUGAS)){
             $this->redirect_to_home();
         }
@@ -15,6 +13,7 @@ class Petugas extends Core_Controller {
         $this->load->model('Appointment_model');
         $this->load->model('Layanan_model');
         $this->load->model('Petugas_model');
+        $this->load->model('User_model');
         $this->load->model('Jadwal_model');
     }
 
@@ -26,6 +25,21 @@ class Petugas extends Core_Controller {
 
     public function dashboard(){
         $this->index();
+    }
+
+    public function view_user(){
+        $this->view_title = 'List User Immunihealth';
+
+        //Paginate
+        $items_per_page = 10;
+        $data['curr_page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $this->paginate('petugas/view_user', $items_per_page, $this->User_model->count_all());
+        $data['list_user'] = $this->User_model->get_list($items_per_page, $data['curr_page']);
+        $data['pagination'] = $this->pagination->create_links();
+        //End Paginate
+
+        $this->view_page = DIR_PETUGAS_PAGES.'/table_user';
+        $this->show_layout(LOGGEDIN_LAYOUT, $data);
     }
 
     public function view_pasien(){
@@ -115,5 +129,10 @@ class Petugas extends Core_Controller {
     }
 
 
+    public function logout(){
+        $this->session->unset_userdata('user_session');
+        $this->session->sess_destroy();
+        redirect('/login/sign_in');
+    }
 }
 ?>

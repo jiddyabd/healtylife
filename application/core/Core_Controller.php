@@ -53,7 +53,9 @@ class Core_Controller extends CI_Controller {
             $this->view_data = $data;
         }
 
-
+        if(!is_null($this->session->userdata("user_session"))){
+            $this->set_session_view_data();
+        };
 
         $view_layout = $this->get_selected_layout($selected_layout);
         $view_layout['_page_name'] = str_replace('.php', '', $this->view_page);
@@ -90,7 +92,7 @@ class Core_Controller extends CI_Controller {
     }
 
     private function get_sidebar_by_role(){
-        $role = $this->session->userdata("role");
+        $role = $this->get_user_role();
         switch($role){
             case DOKTER: return $this->load->view(TEMPLATE_DIR.TEMPLATE_SIDEBAR_DOKTER, $this->view_data, true); break;
             case PASIEN: return $this->load->view(TEMPLATE_DIR.TEMPLATE_SIDEBAR_PASIEN, $this->view_data, true); break;
@@ -103,9 +105,9 @@ class Core_Controller extends CI_Controller {
     
     //Load default data
     private function set_session_view_data(){
-        return [
-
-        ];
+        $this->view_data['_user_role'] = $this->session->userdata("user_session")['role'];
+        $this->view_data['_user_name'] = $this->session->userdata("user_session")['nama'];
+        $this->view_data['_user_id'] = $this->session->userdata("user_session")['id'];
     }
 
     /**
@@ -158,7 +160,7 @@ class Core_Controller extends CI_Controller {
 
     //Utilities
     protected function is_user_can_access($current_pages){
-        $role = $this->session->userdata("role");
+        $role = $this->get_user_role();
         switch($role){
             case DOKTER: if($current_pages == DOKTER) return true; break;
             case PASIEN: if($current_pages == PASIEN) return true; break;
@@ -169,7 +171,7 @@ class Core_Controller extends CI_Controller {
     }
 
     protected function redirect_to_home(){
-        $role = $this->session->userdata("role");
+        $role = $this->get_user_role();
         switch($role){
             case DOKTER: 
                 redirect('dokter/home');
@@ -186,6 +188,22 @@ class Core_Controller extends CI_Controller {
         $this->session->unset_userdata('datauser');
         $this->session->sess_destroy();
         redirect('/login/sign_in');
+    }
+
+    protected function get_user_session(){
+        return $this->session->userdata('user_session');
+    }
+
+    protected function get_user_id(){
+        return $this->get_user_session()['id'];
+    }
+
+    protected function get_user_name(){
+        return $this->get_user_session()['name'];
+    }
+
+    protected function get_user_role(){
+        return $this->get_user_session()['role'];
     }
 
 }

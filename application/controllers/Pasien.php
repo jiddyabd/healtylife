@@ -4,6 +4,9 @@ class Pasien extends Core_Controller {
     public function __construct()
     {
 		parent::__construct();
+        if(!$this->is_user_can_access(PASIEN)){
+            $this->redirect_to_home();
+        }
         $this->load->model('Pasien_model');
         // $this->load->model('Dokter_model');
     }
@@ -148,8 +151,7 @@ class Pasien extends Core_Controller {
         redirect('pasien/PilihJadwalPeriksa');
     }
 
-    public function do_upload()
-    {
+    public function do_upload(){
 
         $config['upload_path']          =  './assets/gambar/'; //isi dengan nama folder tempat menyimpan gambar
         $config['allowed_types']        =  'gif|jpg|png'; //isi dengan format/tipe gambar yang diterima
@@ -194,14 +196,12 @@ class Pasien extends Core_Controller {
         }
     }
 
-    public function logout(){
-        $this->session->unset_userdata('datauser');
-        $this->session->sess_destroy();
-        redirect('index/utama');
-    }
-
 
     //Add Jadwal Appointment
+    public function index(){
+        $this->appointment();
+    }
+    
     public function appointment(){
         $data['title'] = "Jadwal Appointment";
         $data_pasien = null; //TODO
@@ -217,5 +217,12 @@ class Pasien extends Core_Controller {
         $this->load->view('pages/pasien/daftar_appointment',['data' => $data_pasien]);
         $this->load->view('templates/footer_index');
     }
+
+    public function logout(){
+        $this->session->unset_userdata('user_session');
+        $this->session->sess_destroy();
+        redirect('/login/sign_in');
+    }
+    
 }
 ?>

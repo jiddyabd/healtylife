@@ -16,5 +16,12 @@ class Petugas_model extends CI_Model{
     public function count_all(){
         return $this->db->count_all('petugas');
     }
+
+    public function is_password_and_username_valid($username, $password){
+        $this->db->where('petugas_id', $username);
+        $this->db->where('password', $password);
+        $query = $this->db->get('petugas');
+        return $query->row();
+    }
 }
 ?>

@@ -16,10 +16,13 @@
                 <a class="nav-link" href="<?= base_url() ?>petugas/view_appointment">Appointment</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url() ?>petugas/view_pasien">Pasien</a>
+                <a class="nav-link" href="<?= base_url() ?>petugas/view_dokter">Dokter</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url() ?>petugas/view_dokter">Dokter</a>
+                <a class="nav-link" href="<?= base_url() ?>petugas/view_user">User</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url() ?>petugas/view_pasien">Pasien</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url() ?>petugas/view_layanan">Layanan</a>

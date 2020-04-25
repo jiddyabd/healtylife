@@ -142,5 +142,6 @@ class Pasien_model extends CI_Model
         $query = $this->db->get('pasien');
         return $query->row();
     }
+
 }
 ?>
