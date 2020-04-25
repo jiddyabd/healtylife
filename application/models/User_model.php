@@ -30,5 +30,9 @@ class User_model extends CI_Model{
         $query = $this->db->get('user');
         return $query->row();
     }
+
+    public function sign_up($data){
+        $this->db->insert('user', $data);
+    }
 }
 ?>

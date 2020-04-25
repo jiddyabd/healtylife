@@ -105,9 +105,9 @@ class Core_Controller extends CI_Controller {
     
     //Load default data
     private function set_session_view_data(){
-        $this->view_data['_user_role'] = $this->session->userdata("user_session")['role'];
-        $this->view_data['_user_name'] = $this->session->userdata("user_session")['nama'];
-        $this->view_data['_user_id'] = $this->session->userdata("user_session")['id'];
+        $this->view_data['_user_role'] = $this->get_user_role();
+        $this->view_data['_user_name'] = $this->get_user_name();
+        $this->view_data['_user_id'] =  $this->get_user_id();
     }
 
     /**
@@ -199,11 +199,23 @@ class Core_Controller extends CI_Controller {
     }
 
     protected function get_user_name(){
-        return $this->get_user_session()['name'];
+        return $this->get_user_session()['nama'];
     }
 
     protected function get_user_role(){
         return $this->get_user_session()['role'];
+    }
+
+    protected function get_day_on_indonesia($day){
+        switch($day){
+            case 'Monday': return "Senin"; break;
+            case 'Tuesday': return "Selasa"; break;
+            case 'Wednesday': return "Rabu"; break;
+            case 'Thrusday': return "Kamis"; break;
+            case 'Friday': return "Jumat"; break;
+            case 'Saturday': return "Sabtu"; break;
+            case 'Sunday': return "Minggu"; break;
+        }
     }
 
 }

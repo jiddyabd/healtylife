@@ -21,7 +21,7 @@ USE `immunihealth` ;
 -- Table `immunihealth`.`Pasien`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `immunihealth`.`Pasien` (
-  `pasien_id` VARCHAR(10) NOT NULL,
+  `pasien_id` INT(10) NOT NULL AUTO_INCREMENT,
   `nama_pasien` VARCHAR(45) NULL,
   `tanggal_lahir` DATE NULL,
   `jenis_kelamin` VARCHAR(45) NULL,
@@ -46,7 +46,7 @@ ENGINE = InnoDB;
 -- Table `immunihealth`.`Layanan`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `immunihealth`.`Layanan` (
-  `layanan_id` VARCHAR(10) NOT NULL,
+  `pasien_id` INT(10) NOT NULL AUTO_INCREMENT,
   `grup` VARCHAR(45) NULL,
   `jenis_layanan` VARCHAR(20) NULL,
   PRIMARY KEY (`layanan_id`))
@@ -88,27 +88,24 @@ ENGINE = InnoDB;
 -- Table `immunihealth`.`Appointment`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `immunihealth`.`Appointment` (
-  `appointment_id` VARCHAR(10) NOT NULL,
-  `mulai` DATETIME NULL,
-  `selesai` DATETIME NULL,
+  `appointment_id` INT(10) NOT NULL AUTO_INCREMENT,
+  `tgl_waktu_permintaan` DATETIME NULL,
   `nama_wali` VARCHAR(45) NULL,
+  `nama_pasien` VARCHAR(45) NULL,
+  `tanggal_lahir` DATE NULL,
+  `jenis_kelamin` VARCHAR(45) NULL,
   `notes` VARCHAR(45) NULL,
-  `pasien_id` VARCHAR(10) NOT NULL,
   `user_id` VARCHAR(10) NOT NULL,
   `layanan_id` INT(10) NOT NULL,
-  `dokter_id` VARCHAR(10) NOT NULL,
-  `jadwal_id` INT(10) NOT NULL,
+  `dokter_id` VARCHAR(10) NULL,
+  `jadwal_id` INT(10) NULL,
+  `is_acc` SMALLINT NULL,
+  `is_done` SMALLINT NULL,
+  `is_denied` SMALLINT NULL,
   PRIMARY KEY (`appointment_id`),
-  INDEX `fk_Appointment_Pasien_idx` (`pasien_id` ASC),
   INDEX `fk_Appointment_User1_idx` (`user_id` ASC),
   INDEX `fk_Appointment_Layanan1_idx` (`layanan_id` ASC),
   INDEX `fk_Appointment_Dokter1_idx` (`dokter_id` ASC),
-  INDEX `fk_Appointment_Jadwal1_idx` (`jadwal_id` ASC),
-  CONSTRAINT `fk_Appointment_Pasien`
-    FOREIGN KEY (`pasien_id`)
-    REFERENCES `immunihealth`.`Pasien` (`pasien_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_Appointment_User1`
     FOREIGN KEY (`user_id`)
     REFERENCES `immunihealth`.`User` (`user_id`)
@@ -122,11 +119,6 @@ CREATE TABLE IF NOT EXISTS `immunihealth`.`Appointment` (
   CONSTRAINT `fk_Appointment_Dokter1`
     FOREIGN KEY (`dokter_id`)
     REFERENCES `immunihealth`.`Dokter` (`dokter_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Appointment_Jadwal1`
-    FOREIGN KEY (`jadwal_id`)
-    REFERENCES `immunihealth`.`Jadwal` (`jadwal_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

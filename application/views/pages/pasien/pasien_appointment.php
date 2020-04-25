@@ -27,7 +27,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Senin, 13 Oktober 2020</td>
+                  <td>Monday, 13 Oktober 2020</td>
                   <td>Vaksinasi Fluenza</td>
                   <td>Dr. Oz</td>
                   <td>1</td>
@@ -36,7 +36,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>Senin, 13 Oktober 2020</td>
+                  <td>Monday, 13 Oktober 2020</td>
                   <td>Imunisasi Polio</td>
                   <td>Dr. Oz</td>
                   <td>1</td>
@@ -45,7 +45,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>Senin, 13 Oktober 2020</td>
+                  <td>Monday, 13 Oktober 2020</td>
                   <td>Vaksinasi Fluenza</td>
                   <td>Dr. Oz</td>
                   <td>1</td>
@@ -54,7 +54,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>Senin, 13 Oktober 2020</td>
+                  <td>Monday, 13 Oktober 2020</td>
                   <td>Vaksinasi Fluenza</td>
                   <td>Dr. Oz</td>
                   <td>1</td>
@@ -63,7 +63,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>Senin, 13 Oktober 2020</td>
+                  <td>Monday, 13 Oktober 2020</td>
                   <td>Imunisasi Polio</td>
                   <td>Dr. Oz</td>
                   <td>1</td>
@@ -72,7 +72,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>Senin, 13 Oktober 2020</td>
+                  <td>Monday, 13 Oktober 2020</td>
                   <td>Vaksinasi Fluenza</td>
                   <td>Dr. Oz</td>
                   <td>1</td>
@@ -81,7 +81,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>Senin, 13 Oktober 2020</td>
+                  <td>Monday, 13 Oktober 2020</td>
                   <td>Vaksinasi Fluenza</td>
                   <td>Dr. Oz</td>
                   <td>1</td>
@@ -90,7 +90,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>Senin, 13 Oktober 2020</td>
+                  <td>Monday, 13 Oktober 2020</td>
                   <td>Imunisasi Polio</td>
                   <td>Dr. Oz</td>
                   <td>1</td>
@@ -99,7 +99,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>Senin, 13 Oktober 2020</td>
+                  <td>Monday, 13 Oktober 2020</td>
                   <td>Vaksinasi Fluenza</td>
                   <td>Dr. Oz</td>
                   <td>1</td>
@@ -108,7 +108,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>Senin, 13 Oktober 2020</td>
+                  <td>Monday, 13 Oktober 2020</td>
                   <td>Vaksinasi Fluenza</td>
                   <td>Dr. Oz</td>
                   <td>1</td>

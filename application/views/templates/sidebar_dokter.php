@@ -16,6 +16,9 @@
                 <a class="nav-link" href="<?= base_url() ?>dokter/view_appointment">Appointment</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="<?= base_url() ?>dokter/riwayat_kerja">Riwayat Kerja</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="<?= base_url() ?>dokter/view_jadwal">Jadwal</a>
             </li>
         </ul>

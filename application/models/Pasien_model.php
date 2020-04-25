@@ -143,5 +143,10 @@ class Pasien_model extends CI_Model
         return $query->row();
     }
 
+    
+    public function insert($data){
+		$this->db->insert('pasien', $data);
+    }
+
 }
 ?>

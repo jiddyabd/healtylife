@@ -21,7 +21,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
-                <label id="lbl-register">Belum punya akun? <a href="<?= base_url() ?>pasien/register_pasien">Daftar disini.</a></label>
+                <label id="lbl-register">Belum punya akun? <a href="<?= base_url() ?>login/sign_up">Daftar disini.</a></label>
             </div>
         </div>
     </div>

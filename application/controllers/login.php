@@ -13,6 +13,10 @@
             $this->load->model('User_model');
         }
 
+        public function index(){
+            $this->sign_in();
+        }
+
         public function sign_in(){
             $this->view_title = 'Welcome to Immunihealth';
             $this->view_page = 'pages/login/signin_screen';
@@ -64,11 +68,41 @@
 
                 redirect('petugas');
                 return;
-            }
-        }
+            };
 
-        public function on_submit_sign_up(){
-            
+            redirect('login/sign_in');
+        }
+        
+        public function submit_sign_up(){
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
+            $cpassword = $this->input->post('cpassword');
+            $email = $this->input->post('email');
+            $name = $this->input->post('name');
+            $no_telp = $this->input->post('no_telp');
+
+            if($password != $cpassword){
+                redirect('login/sign_up');
+            }
+
+            $data = array(
+                "user_id" => $username,
+                "nama_user" => $name,
+                "password" => $password,
+                "email" => $email,
+                "no_telp" => $no_telp,
+            );
+
+            $this->User_model->sign_up($data);
+
+            $user_session_data = array(
+                "id" => $username,
+                "nama" => $name,
+                "role" => PASIEN,
+            );
+            $this->session->set_userdata("user_session", $user_session_data);
+
+            redirect('pasien');
         }
     }
 

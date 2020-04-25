@@ -61,11 +61,11 @@
                 <label for="inputEmail4">Hari</label>
                 <select id="inputState" class="form-control">
                     <option value="" disabled selected>Pilih Hari</option>
-                    <option value="Senin">Senin</option>
-                    <option value="Selasa">Selasa</option>
-                    <option value="Rabu">Rabu</option>
-                    <option value="Kamis">Kamis</option>
-                    <option value="Jumat">Jumat</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
                 </select>
             </div>
             <div class="form-group">
@@ -104,11 +104,11 @@
                 <label for="inputEmail4">Hari</label>
                 <select value="<?= $jadwal_dokter->hari ?>" id="inputState" class="form-control">
                     <option disabled>Pilih Hari</option>
-                    <option <?php if($jadwal_dokter->hari == "Senin") { echo 'selected'; }?> value="Senin">Senin</option>
-                    <option <?php if($jadwal_dokter->hari == "Selasa") { echo 'selected'; }?> value="Selasa">Selasa</option>
-                    <option <?php if($jadwal_dokter->hari == "Rabu") { echo 'selected'; }?> value="Rabu">Rabu</option>
-                    <option <?php if($jadwal_dokter->hari == "Kamis") { echo 'selected'; }?> value="Kamis">Kamis</option>
-                    <option <?php if($jadwal_dokter->hari == "Jumat") { echo 'selected'; }?> value="Jumat">Jumat</option>
+                    <option <?php if($jadwal_dokter->hari == "Monday") { echo 'selected'; }?> value="Monday">Monday</option>
+                    <option <?php if($jadwal_dokter->hari == "Tuesday") { echo 'selected'; }?> value="Tuesday">Tuesday</option>
+                    <option <?php if($jadwal_dokter->hari == "Wednesday") { echo 'selected'; }?> value="Wednesday">Wednesday</option>
+                    <option <?php if($jadwal_dokter->hari == "Thursday") { echo 'selected'; }?> value="Thursday">Thursday</option>
+                    <option <?php if($jadwal_dokter->hari == "Friday") { echo 'selected'; }?> value="Friday">Friday</option>
                 </select>
             </div>
             <div class="form-group">
