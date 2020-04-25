@@ -116,5 +116,31 @@ class Pasien_model extends CI_Model
         }
         redirect('pasien/profil');
     }
+
+
+    //For table
+    public function get_all()
+        {$query = $this->db->get('pasien');
+        return $query->result();
+    }
+
+    public function get_list($limit, $start){
+        $this->db->from('pasien', $limit, $start);
+        $this->db->order_by("pasien_id", "asc");
+        $this->db->limit($limit, $start);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    
+    public function count_all(){
+        return $this->db->count_all('pasien');
+    }
+
+    
+    public function get_by_pasien_id($pasien_id){
+        $this->db->where('pasien_id', $pasien_id);
+        $query = $this->db->get('pasien');
+        return $query->row();
+    }
 }
 ?>

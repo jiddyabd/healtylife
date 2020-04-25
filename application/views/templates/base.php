@@ -63,7 +63,7 @@
                 <!-- Page title  -->
                 <div class="page-content page-title-container padding-bottom-45">
                     <div class="container-fluid page-title">
-                        <h5 style="color: #fff">Page title</h5>
+                        <h5 style="color: #fff"><?= $_view_title; ?></h5>
                     </div>
                 </div>
                 <!-- End Page title -->

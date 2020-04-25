@@ -28,9 +28,11 @@ class Core_Controller extends CI_Controller {
         parent::__construct();
         $this->init_attr();
         // Load helper
+        $this->load->helper('url');
         $this->load->helper('url_helper');
         $this->load->library('form_validation');
         $this->load->library('session');
+        $this->load->library('pagination');
     }
 
     //Init class attributes
@@ -47,7 +49,7 @@ class Core_Controller extends CI_Controller {
      */
     //#start layouy func
     public function show_layout($selected_layout = LOGGEDIN_LAYOUT, $data = null){
-        if(is_null($data)){
+        if(!is_null($data)){
             $this->view_data = $data;
         }
 
@@ -119,6 +121,40 @@ class Core_Controller extends CI_Controller {
 
     }
     //#end toast func
+
+    //Pagination config
+    protected function paginate($url, $per_page, $total_rows){
+        $config['base_url'] = base_url($url); //site url
+        $config['total_rows'] = $total_rows; //total row
+        $config['per_page'] = $per_page;  //show record per halaman
+        $config["uri_segment"] = 4;  // uri parameter
+        $choice = $config["total_rows"] / $config["per_page"];
+        $config["num_links"] = floor($choice);
+
+        $config['first_link']       = 'First';
+        $config['last_link']        = 'Last';
+        $config['next_link']        = 'Next';
+        $config['prev_link']        = 'Previous';
+        $config['full_tag_open']    = '<nav aria-label="Page navigation example"><ul class="pagination justify-content-end">';
+        $config['full_tag_close']   = ' </ul></nav>';
+        $config['num_tag_open']     = '<li class="page-item"><button class="page-link">';
+        $config['num_tag_close']    = '</button></li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><button class="page-link">';
+        $config['cur_tag_close']    = '</button></li>';
+        $config['next_tag_open']    = '<li class="page-item"><button class="page-link">';
+        $config['next_tagl_close']  = '</button></li>';
+        $config['prev_tag_open']    = '<li class="page-item"><button class="page-link">';
+        $config['prev_tagl_close']  = '</button></li>';
+        $config['first_tag_open']   = '<li class="page-item"><button class="page-link">';
+        $config['prev_tagl_close']  = '</button></li>';
+        $config['last_tag_open']    = '<li class="page-item"><button class="page-link">';
+        $config['prev_tagl_close']  = '</button></li>';
+
+
+        $this->pagination->initialize($config);      
+        $data['pagination'] = $this->pagination->create_links();
+
+    }
 
     //Utilities
     protected function is_user_can_access($current_pages){

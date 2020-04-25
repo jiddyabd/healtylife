@@ -3,11 +3,10 @@
         <div class="card-container">
             <div class="card">
                 <div class="card-header">
-                    
                     <div class="d-flex justify-content-between align-items-center">
-                        <b>Daftar Dokter</b>
+                        <b>Daftar Petugas</b>
                         <div>
-                            <button data-toggle="modal" data-target="#tambah_dokter_modal" class="btn btn-primary">Tambah Dokter</button>
+                            <button data-toggle="modal" data-target="#tambah_petugas_modal" class="btn btn-primary">Tambah Petugas</button>
                         </div>
                     </div>
                 </div>
@@ -16,25 +15,21 @@
                         <thead>
                             <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Username</th>
+                            <th scope="col">Id</th>
                             <th scope="col">Nama</th>
-                            <th scope="col">Jadwal</th>
                             <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $table_number = ++$curr_page?>
-                            <?php foreach($list_dokter as $dokter){?>
+                            <?php foreach($list_petugas as $petugas){?>
                             <tr>
                                 <th scope="row"><?= $table_number++ ?></th>
-                                <td><?= $dokter->dokter_id?></td>
-                                <td><?= $dokter->nama_dokter?></td>
+                                <td><?= $petugas->petugas_id?></td>
+                                <td><?= $petugas->nama_petugas?></td>
                                 <td>
-                                    <a class="btn btn-dark" href="<?=base_url('petugas/jadwal_dokter/'.$dokter->dokter_id)?>">Lihat Jadwal</a>
-                                </td>
-                                <td>
-                                    <button data-toggle="modal" data-target="#edit_dokter_modal_<?= $dokter->dokter_id ?>" class="btn btn-primary">Edit</button>
-                                    <button data-toggle="modal" data-target="#hapus_dokter_modal_<?= $dokter->dokter_id ?>" class="btn btn-danger">Hapus</button>
+                                    <button data-toggle="modal" data-target="#edit_petugas_modal_<?= $petugas->petugas_id ?>" class="btn btn-primary">Edit</button>
+                                    <button data-toggle="modal" data-target="#hapus_petugas_modal_<?= $petugas->petugas_id ?>" class="btn btn-danger">Hapus</button>
                                 </td>
                             </tr>
                             <?php }; ?>
@@ -47,12 +42,12 @@
     </div>
 </div>
 
-<!-- Modal Tambah Dokter -->
-<div class="modal fade" id="tambah_dokter_modal" tabindex="-1" role="dialog" aria-labelledby="edit_dokter_modal_Title" aria-hidden="true">
+<!-- Modal Tambah petugas -->
+<div class="modal fade" id="tambah_petugas_modal" tabindex="-1" role="dialog" aria-labelledby="edit_petugas_modal_Title" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="edit_dokter_modal_Title">Tambah Data Dokter</h5>
+        <h5 class="modal-title" id="edit_petugas_modal_Title">Tambah Data petugas</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -70,8 +65,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputAddress">Nama Dokter</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="Masukan nama dokter">
+                <label for="inputAddress">Nama Petugas</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Masukan nama Petugas">
             </div>
         </form>
       </div>
@@ -82,14 +77,14 @@
     </div>
   </div>
 </div>
-<!-- Modal Edit Dokter -->
-<?php foreach($list_dokter as $dokter) { ?>
+<!-- Modal Edit petugas -->
+<?php foreach($list_petugas as $petugas) { ?>
 
-<div class="modal fade" id="edit_dokter_modal_<?= $dokter->dokter_id ?>" tabindex="-1" role="dialog" aria-labelledby="edit_dokter_modal_Title" aria-hidden="true">
+<div class="modal fade" id="edit_petugas_modal_<?= $petugas->petugas_id ?>" tabindex="-1" role="dialog" aria-labelledby="edit_petugas_modal_Title" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="edit_dokter_modal_Title">Edit Data Dokter</h5>
+        <h5 class="modal-title" id="edit_petugas_modal_Title">Edit Data petugas</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -99,16 +94,16 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputEmail4">Id</label>
-                    <input disabled type="text" class="form-control" value="<?= $dokter->dokter_id ?>" id="inputEmail4">
+                    <input type="text" placeholder="Masukan Id Username (min. 6 karakter)" class="form-control" id="inputEmail4">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputPassword4">Password</label>
-                    <input disabled type="text" value="Password hanya bisa diganti oleh dokter." class="form-control" id="inputPassword4">
+                    <input type="text" placeholder="Masukan Password (min 8 karakter)" class="form-control" id="inputPassword4">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputAddress">Nama Dokter</label>
-                <input type="text" class="form-control" id="inputAddress" value="<?= $dokter->nama_dokter ?>" placeholder="Masukan nama dokter">
+                <label for="inputAddress">Nama Petugas</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Masukan nama Petugas">
             </div>
         </form>
       </div>
@@ -120,18 +115,18 @@
   </div>
 </div>
 
-<!-- Modal Hapus Dokter (Dialog) -->
-<div class="modal fade" id="hapus_dokter_modal_<?= $dokter->dokter_id ?>" tabindex="-1" role="dialog" aria-labelledby="hapus_dokter_modal_Title" aria-hidden="true">
+<!-- Modal Hapus petugas (Dialog) -->
+<div class="modal fade" id="hapus_petugas_modal_<?= $petugas->petugas_id ?>" tabindex="-1" role="dialog" aria-labelledby="hapus_petugas_modal_Title" aria-hidden="true">
     <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Hapus Data Dokter</h5>
+        <h5 class="modal-title">Hapus Data petugas</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Apakah anda yakin ingin menghapus data dokter ini ?</p>
+        <p>Apakah anda yakin ingin menghapus data petugas ini ?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
