@@ -195,15 +195,24 @@ class Core_Controller extends CI_Controller {
     }
 
     protected function get_user_id(){
-        return $this->get_user_session()['id'];
+        if(!is_null($this->get_user_session())){
+            return $this->get_user_session()['id'];
+        }
+        return null;
     }
 
     protected function get_user_name(){
-        return $this->get_user_session()['nama'];
+        if(!is_null($this->get_user_session())){
+            return $this->get_user_session()['nama'];
+        }
+        return null;
     }
 
     protected function get_user_role(){
-        return $this->get_user_session()['role'];
+        if(!is_null($this->get_user_session())){
+            return $this->get_user_session()['role'];
+        }
+        return null;
     }
 
     protected function get_day_on_indonesia($day){
