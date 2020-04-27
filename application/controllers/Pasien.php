@@ -210,7 +210,7 @@ class Pasien extends Core_Controller {
         //Paginate
         $items_per_page = 10;
         $data['curr_page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-        $this->paginate('petugas/view_appointment', $items_per_page, $this->Appointment_model->count_all());
+        $this->paginate('pasien/appointment', $items_per_page, $this->Appointment_model->count_all());
         $data['list_appointment'] = $this->Appointment_model->get_list($items_per_page, $data['curr_page']);
         $data['pagination'] = $this->pagination->create_links();
         //End Paginate
@@ -231,14 +231,14 @@ class Pasien extends Core_Controller {
         $data_pasien = array(
             "nama_pasien" => $this->input->post('nama_pasien'),
             "tanggal_lahir" => $this->input->post('tgl_lahir_pasien'),
-            "jenis_kelamin" => $this->input->post('jenis_kelamin')
+            "jenis_kelamin" => $this->input->post('jenis_kelamin_pasien')
         );
         $data_appointment = array(
             "tgl_waktu_permintaan" => $this->input->post('tgl_waktu_permintaan'),
             "nama_wali" => $this->input->post('nama_wali'),
             "nama_pasien" => $this->input->post('nama_pasien'),
             "tanggal_lahir" => $this->input->post('tgl_lahir_pasien'),
-            "jenis_kelamin" => $this->input->post('jenis_kelamin'),
+            "jenis_kelamin" => $this->input->post('jenis_kelamin_pasien'),
             "user_id" => $this->get_user_id(),
             "layanan_id" => $this->input->post('jenis_layanan'),
             "jadwal_id" => null,
@@ -253,18 +253,35 @@ class Pasien extends Core_Controller {
     }
 
     public function appointment_mendatang(){
-        $this->view_title = 'List Appointment';
+        $this->view_title = 'Appointment Mendatang';
 
         //Paginate
         $items_per_page = 10;
         $data['curr_page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-        $this->paginate('petugas/view_appointment', $items_per_page, $this->Appointment_model->count_all());
-        $data['list_appointment'] = $this->Appointment_model->get_list($items_per_page, $data['curr_page']);
+        $this->paginate('pasien/appointment_mendatang', $items_per_page, $this->Appointment_model->count_all());
+        $data['list_appointment'] = $this->Appointment_model->get_list_pasien_appointment_mendatang($this->get_user_id(), $items_per_page, $data['curr_page']);
         $data['pagination'] = $this->pagination->create_links();
         //End Paginate
 
         $this->view_page = DIR_PASIEN_PAGES.'/pasien_appointment';
         $this->show_layout(LOGGEDIN_LAYOUT, $data);
+
+    }
+
+    public function riwayat_appointment(){
+        $this->view_title = 'Riwayat Appointment';
+
+        //Paginate
+        $items_per_page = 10;
+        $data['curr_page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $this->paginate('pasien/riwayat_appointment', $items_per_page, $this->Appointment_model->count_all());
+        $data['list_appointment'] = $this->Appointment_model->get_list_pasien_riwayat_appointment($this->get_user_id(), $items_per_page, $data['curr_page']);
+        $data['pagination'] = $this->pagination->create_links();
+        //End Paginate
+
+        $this->view_page = DIR_PASIEN_PAGES.'/history_appointment';
+        $this->show_layout(LOGGEDIN_LAYOUT, $data);
+
 
     }
 

@@ -18,18 +18,7 @@ class Dokter extends Core_Controller {
     }
 
     public function index(){
-        $this->view_title = 'List Appointment';
-
-        //Paginate
-        $items_per_page = 10;
-        $data['curr_page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-        $this->paginate('dokter/view_appointment', $items_per_page, $this->Appointment_model->count_all());
-        $data['list_appointment'] = $this->Appointment_model->get_all_acc_by_dokter_id($this->get_user_id(), $items_per_page, $data['curr_page']);
-        $data['pagination'] = $this->pagination->create_links();
-        //End Paginate
-
-        $this->view_page = DIR_DOKTER_PAGES.'/view_appointment';
-        $this->show_layout(LOGGEDIN_LAYOUT, $data);
+        $this->view_appointment();
     }
 
     public function dashboard(){

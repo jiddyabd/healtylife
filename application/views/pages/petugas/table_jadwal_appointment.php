@@ -37,20 +37,21 @@
                                 <td><?= $appointment->jenis_kelamin?></td>
                                 <td>
                                     <?php
-                                        if(is_null($appointment->is_acc)){
-                                            echo "Belum di ACC";
-                                        }else{
-                                            if($appointment->is_done){
-                                                echo "Selesai";
-                                                break;
-                                            }
-                                            if($appointment->is_acc == true){
-                                                echo "In Progress";
-                                            }else if($appointment->is_acc == false){
-                                                echo "Ditolak";
-                                            }
+                                      $status_written = false;
+                                      if(is_null($appointment->is_acc)){
+                                          echo "Belum di ACC";
+                                      }else{
+                                          if($appointment->is_done){
+                                              echo "Selesai";
+                                              $status_written = true;
+                                          }
+                                          if($appointment->is_acc == true && !$status_written){
+                                              echo "In Progress";
+                                          }else if($appointment->is_acc == false && !$status_written){
+                                              echo "Ditolak";
+                                          }
 
-                                        }
+                                      }
                                     ?>
                                 </td>
                                 <td>

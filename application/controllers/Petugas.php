@@ -113,7 +113,7 @@ class Petugas extends Core_Controller {
         //Paginate
         $items_per_page = 10;
         $data['curr_page'] = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
-        $this->paginate('petugas/view_layanan', $items_per_page, $this->Appointment_model->count_all());
+        $this->paginate('petugas/view_appointment', $items_per_page, $this->Appointment_model->count_all());
         $data['list_appointment'] = $this->Appointment_model->get_list($items_per_page, $data['curr_page']);
         $data['pagination'] = $this->pagination->create_links();
         //End Paginate

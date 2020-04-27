@@ -174,13 +174,13 @@ class Core_Controller extends CI_Controller {
         $role = $this->get_user_role();
         switch($role){
             case DOKTER: 
-                redirect('dokter/home');
+                redirect('dokter/');
             break;
             case PASIEN:
-                redirect('pasien/home');
+                redirect('pasien/');
             break;
             case PETUGAS: 
-                redirect('petugas/dashboard');
+                redirect('petugas/');
             break;
         }
 

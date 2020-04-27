@@ -4,7 +4,7 @@
 ?>
 
 <nav class="navbar navbar-expand-lg bg-red fixed-top" style="background-color : #262828">
-    <a class="navbar-brand" href="<?= base_url();?>pasien/home"><img src="<?= assets_url().'gambar/logo2.png'?>" style="width:100px"></a>
+    <a class="navbar-brand" href="<?= base_url();?>pasien/"><img src="<?= assets_url().'gambar/logo2.png'?>" style="width:100px"></a>
     <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button> -->
@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav m-auto">
             <li class="nav-item" >
-                <a class="nav-link" href="<?php echo base_url('pasien/home'); ?>" style="color:white">Beranda</a>
+                <a class="nav-link" href="<?php echo base_url('pasien/'); ?>" style="color:white">Beranda</a>
             </li>
             <li class="nav-item">
             <span class="nav-link">|</span>

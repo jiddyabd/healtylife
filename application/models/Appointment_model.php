@@ -35,7 +35,7 @@ class Appointment_model extends CI_Model{
         $this->db->from('appointment', $limit, $start);
         $this->db->where('dokter_id', $dokter_id);
         $this->db->where('is_acc', false);
-        $this->db->where('is_done', null);
+        $this->db->where('is_done IS NULL');
         $this->db->order_by("appointment_id", "asc");
         $this->db->limit($limit, $start);
         $query = $this->db->get();
@@ -47,7 +47,7 @@ class Appointment_model extends CI_Model{
         $this->db->join('jadwal', 'appointment.jadwal_id = jadwal.jadwal_id');
         $this->db->where('appointment.dokter_id', $dokter_id);
         $this->db->where('is_acc', true);
-        $this->db->where('is_done', null);
+        $this->db->where('is_done IS NULL');
         $this->db->order_by("appointment_id", "asc");
         $this->db->limit($limit, $start);
         $query = $this->db->get();
@@ -64,6 +64,33 @@ class Appointment_model extends CI_Model{
         $this->db->limit($limit, $start);
         $query = $this->db->get();
         return $query->result();
+    }
+
+    public function get_list_pasien_riwayat_appointment($pasien_id, $limit, $start){
+      $this->db->from('appointment', $limit, $start);
+      $this->db->join('dokter', 'appointment.dokter_id = dokter.dokter_id');
+      $this->db->join('jadwal', 'appointment.jadwal_id = jadwal.jadwal_id');
+      $this->db->join('layanan', 'appointment.layanan_id = layanan.layanan_id');
+      $this->db->where('appointment.user_id', $pasien_id);
+      $this->db->where('is_done', true);
+      $this->db->order_by("appointment_id", "asc");
+      $this->db->limit($limit, $start);
+      $query = $this->db->get();
+      return $query->result();
+    }
+
+    public function get_list_pasien_appointment_mendatang($user_id, $limit, $start){
+      $this->db->from('appointment', $limit, $start);
+      $this->db->join('dokter', 'appointment.dokter_id = dokter.dokter_id', 'left');
+      $this->db->join('jadwal', 'appointment.jadwal_id = jadwal.jadwal_id', 'left');
+      $this->db->join('layanan', 'appointment.layanan_id = layanan.layanan_id');
+      $this->db->where('appointment.user_id', $user_id);
+      $this->db->where('is_acc IS NULL');
+      $this->db->or_where('(is_acc = TRUE and is_done = FALSE)');
+      $this->db->order_by("appointment_id", "asc");
+      $this->db->limit($limit, $start);
+      $query = $this->db->get();
+      return $query->result();
     }
 
     //CUD
