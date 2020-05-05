@@ -2,8 +2,8 @@
 class User_model extends Core_Model{
     public function __construct(){
         parent::__construct();
-        $table_name = 'user';
-        $table_id = 'user_id';
+        $this->table_name =  'user';
+        $this->table_id = 'user_id';
     }
 
     public function get_list($limit, $start){

@@ -2,8 +2,8 @@
 class Layanan_model extends Core_Model{
     public function __construct(){
         parent::__construct();
-        $table_name = 'layanan';
-        $table_id = 'layanan_id';
+        $this->table_name =  'layanan';
+        $this->table_id = 'layanan_id';
     }
 
     public function get_list($limit, $start){

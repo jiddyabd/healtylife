@@ -3,8 +3,8 @@ class Appointment_model extends Core_Model{
 
   public function __construct(){
     parent::__construct();
-    $table_name = 'appointment';
-    $table_id = 'appointmnent_id';
+    $this->table_name =  'appointment';
+    $this->table_id = 'appointmnent_id';
   }
 
   public function get_list($limit, $start){

@@ -2,8 +2,8 @@
 class Dokter_model extends Core_Model{
     public function __construct(){
         parent::__construct();
-        $table_name = 'dokter';
-        $table_id = 'dokter_id';
+        $this->table_name =  'dokter';
+        $this->table_id = 'dokter_id';
     }
 
     public function get_list($limit, $start){

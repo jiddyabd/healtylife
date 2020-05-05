@@ -2,8 +2,8 @@
 class Pasien_model extends Core_Model{
     public function __construct(){
         parent::__construct();
-        $table_name = 'pasien';
-        $table_id = 'pasien_id';
+        $this->table_name =  'pasien';
+        $this->table_id = 'pasien_id';
     }
 
     // public function ubahProfil($id)

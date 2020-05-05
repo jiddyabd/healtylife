@@ -2,8 +2,8 @@
 class Jadwal_model extends Core_Model{
     public function __construct(){
         parent::__construct();
-        $table_name = 'jadwal';
-        $table_id = 'jadwal_id';
+        $this->table_name =  'jadwal';
+        $this->table_id = 'jadwal_id';
     }
 
     public function get_list($limit, $start){

@@ -2,8 +2,8 @@
 class Petugas_model extends Core_Model{
     public function __construct(){
         parent::__construct();
-        $table_name = 'petugas';
-        $table_id = 'petugas_id';
+        $this->table_name =  'petugas';
+        $this->table_id = 'petugas_id';
     }
 
     public function get_list($limit, $start){

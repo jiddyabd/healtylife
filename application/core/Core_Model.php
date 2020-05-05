@@ -8,30 +8,30 @@ class Core_Model extends CI_Model {
     
 
     public function get_all(){
-        $query = $this->db->get($table_name);
+        $query = $this->db->get($this->table_name);
         return $query->result();
     }
 
     public function count_all(){
-        return $this->db->count_all($table_name);
+        return $this->db->count_all($this->table_name);
     }
 
     public function get_by_id($id){
-        $this->db->where($table_id, $id);
-        return $this->db->get($table_name)->row();
+        $this->db->where($this->table_id, $id);
+        return $this->db->get($this->table_name)->row();
     }
 
     public function delete($id){
-        $this->db->where($table_id, $id);
-        $this->db->delete($table_name);
+        $this->db->where($this->table_id, $id);
+        $this->db->delete($this->table_name);
     }
 
-    public function update($id, $data){
-        $this->db->where($table_id, $id);
-        $this->db->update($table_name, $data);
+    public function update($data, $id){
+        $this->db->where($this->table_id, $id);
+        $this->db->update($this->table_name, $data);
     }
 
     public function insert($data){
-        $this->db->insert($table_name, $data);
+        $this->db->insert($this->table_name, $data);
     }
 }
