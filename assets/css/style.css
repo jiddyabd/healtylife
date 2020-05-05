@@ -49,7 +49,7 @@ body {
 }
 
 /* Header Login */
-button[type=submit]{
+.login-btn{
 	background: #badc58;
 	color: white;
 	font-size: 11pt;
@@ -58,23 +58,11 @@ button[type=submit]{
 	padding: 10px 20px;
 	border-radius: 5px;
 }
-button[type=submit]:hover{
+.login-btn:hover{
 	cursor: pointer;
 	background: #46de4b;
 }
-input[type=submit]{
-	background: #badc58;
-	color: white;
-	font-size: 11pt;
-	width: 100%;
-	border: none;
-	padding: 10px 20px;
-	border-radius: 5px;
-}
-input[type=submit]:hover{
-	cursor: pointer;
-	background: #46de4b;
-}
+
 /* html,body {
 	margin:0;
 	padding:0;

@@ -9,7 +9,7 @@
             <div  style="margin-right: 15%; margin-top: 10%">
                 <h3>Welcome to <span style="color: #008037">Immunihealth</span></h3>
                 <p>Keeping your healthy behaviour is just a single step away. With a single sign-in you can keep your future healtier than ever. 💊</p>
-                <form method="post" action="<?=base_url('login/submit_sign_in')?>"style="margin-top: 50px; margin-bottom: 15px">
+                <form method="post" action="<?=base_url('login/submit_sign_in')?>" style="margin-top: 50px; margin-bottom: 15px">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Username</label>
                         <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -19,7 +19,7 @@
                         <label for="exampleInputPassword1">Password</label>
                         <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button class="login-btn" type="submit" class="btn btn-primary">Submit</button>
                 </form>
                 <label id="lbl-register">Belum punya akun? <a href="<?= base_url() ?>login/sign_up">Daftar disini.</a></label>
             </div>

@@ -93,7 +93,7 @@
                 "no_telp" => $no_telp,
             );
 
-            $this->User_model->sign_up($data);
+            $this->User_model->insert($data);
 
             $user_session_data = array(
                 "id" => $username,

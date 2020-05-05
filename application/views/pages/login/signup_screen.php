@@ -41,7 +41,7 @@
                             <input type="password" name="cpassword" class="form-control" id="exampleInputPassword1">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Register Now</button>
+                    <button class="login-btn" type="submit" class="btn btn-primary">Register Now</button>
                 </form>
             </div>
             <label id="lbl-register">Sudah punya akun? <a href="<?= base_url() ?>login/sign_in">Login disini.</a></label>
