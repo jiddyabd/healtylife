@@ -52,22 +52,22 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <form>
-            <div class="form-group">
-                <label for="inputEmail4">Jenis Layanan</label>
-                <input type="text" class="form-control" id="inputEmail4">
-            </div>
-            <div class="form-group">
-                <label for="inputPassword4">Grup Layanan</label>
-                <input type="text" class="form-control" id="inputPassword4">
-            </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Tambah</button>
-      </div>
+      <form method="post" action="<?=base_url('petugas/tambah_layanan')?>">
+        <div class="modal-body">
+              <div class="form-group">
+                  <label for="inputEmail4">Jenis Layanan</label>
+                  <input name="jenis_layanan" type="text" class="form-control" id="inputEmail4">
+              </div>
+              <div class="form-group">
+                  <label for="inputPassword4">Grup Layanan</label>
+                  <input name="grup" type="text" class="form-control" id="inputPassword4">
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Tambah</button>
+        </div>`
+      </form>
     </div>
   </div>
 </div>
@@ -83,22 +83,22 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <form>
-            <div class="form-group">
-                <label for="inputEmail4">Jenis Layanan</label>
-                <input type="text" class="form-control" id="inputEmail4">
-            </div>
-            <div class="form-group">
-                <label for="inputPassword4">Grup Layanan</label>
-                <input type="text" class="form-control" id="inputPassword4">
-            </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      <form method="post" action="<?=base_url('petugas/edit_layanan/'.$layanan->layanan_id)?>">
+        <div class="modal-body">
+              <div class="form-group">
+                  <label for="inputEmail4">Jenis Layanan</label>
+                  <input value="<?=$layanan->jenis_layanan?>" name="jenis_layanan" type="text" class="form-control" id="inputEmail4">
+              </div>
+              <div class="form-group">
+                  <label for="inputPassword4">Grup Layanan</label>
+                  <input value="<?=$layanan->grup?>"name="grup" type="text" class="form-control" id="inputPassword4">
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -118,7 +118,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-        <button type="button" class="btn btn-primary">Ya</button>
+        <a href="<?=base_url('petugas/hapus_layanan/'.$layanan->layanan_id)?>" class="btn btn-primary">Ya</a>
       </div>
     </div>
   </div>

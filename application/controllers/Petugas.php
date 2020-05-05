@@ -107,6 +107,32 @@ class Petugas extends Core_Controller {
 
     }
 
+    public function tambah_layanan(){
+        $data_layanan = array(
+            "jenis_layanan" => $this->input->post('jenis_layanan'),
+            "grup" => $this->input->post('grup')
+        );
+
+        $this->Layanan_model->insert($data_layanan);
+        redirect('petugas/view_layanan');
+    }
+
+    public function edit_layanan($layanan_id){
+        $data_layanan = array(
+            "jenis_layanan" => $this->input->post('jenis_layanan'),
+            "grup" => $this->input->post('grup')
+        );
+
+        $this->Layanan_model->update($data_layanan, $layanan_id);
+        redirect('petugas/view_layanan');
+
+    }
+
+    public function hapus_layanan($layanan_id){
+        $this->Layanan_model->delete($layanan_id);
+        redirect('petugas/view_layanan');
+    }
+
     //End daftar layanan
 
     //Appointment
