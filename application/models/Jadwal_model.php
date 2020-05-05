@@ -2,7 +2,7 @@
 class Jadwal_model extends Core_Model{
     public function __construct(){
         parent::__construct();
-        $table_naem = 'jadwal';
+        $table_name = 'jadwal';
         $table_id = 'jadwal_id';
     }
 

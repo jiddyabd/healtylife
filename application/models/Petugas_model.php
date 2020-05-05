@@ -2,7 +2,7 @@
 class Petugas_model extends Core_Model{
     public function __construct(){
         parent::__construct();
-        $table_naem = 'petugas';
+        $table_name = 'petugas';
         $table_id = 'petugas_id';
     }
 

@@ -2,7 +2,7 @@
 class Layanan_model extends Core_Model{
     public function __construct(){
         parent::__construct();
-        $table_naem = 'layanan';
+        $table_name = 'layanan';
         $table_id = 'layanan_id';
     }
 

@@ -2,7 +2,7 @@
 class User_model extends Core_Model{
     public function __construct(){
         parent::__construct();
-        $table_naem = 'user';
+        $table_name = 'user';
         $table_id = 'user_id';
     }
 

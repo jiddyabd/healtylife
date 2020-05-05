@@ -3,7 +3,7 @@ class Appointment_model extends Core_Model{
 
   public function __construct(){
     parent::__construct();
-    $table_naem = 'appointment';
+    $table_name = 'appointment';
     $table_id = 'appointmnent_id';
   }
 

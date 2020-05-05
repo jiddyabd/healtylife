@@ -2,7 +2,7 @@
 class Dokter_model extends Core_Model{
     public function __construct(){
         parent::__construct();
-        $table_naem = 'dokter';
+        $table_name = 'dokter';
         $table_id = 'dokter_id';
     }
 
