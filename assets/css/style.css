@@ -114,6 +114,42 @@ body {
 	
 }
 
+.active{
+	background: #f6f9fc;
+	color: black !important;
+}
+.toast{
+	z-index: 999999;
+	color:white;
+}
+
+.toast-icon{
+	font-size: 40px;
+}
+
+.toast-header{
+	border: none;
+	z-index:11;
+}
+
+._toast-body{
+	margin-top: -45px;
+	min-width: 300px;
+	z-index:10;
+}
+
+.toast-default > div{
+	background-color: #0087d7;
+}
+
+.toast-success > div{
+	background-color: #41d888 !important;
+}
+
+.toast-error > div{
+	background-color: #f94416 !important;
+}
+
 /* Sidebar */
 #sidebar {
 	padding: 0 !important;
@@ -235,4 +271,22 @@ body {
     padding-top: .25rem;
     padding-bottom: .25rem;
     letter-spacing: .04em;
+}
+
+.dashboard-icon{
+	color: #fff!important;
+	display: inline-flex;
+    padding: 12px;
+    text-align: center;
+    border-radius: 50%;
+    align-items: center;
+	justify-content: center;
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%!important;
+	background: linear-gradient(87deg,#f5365c 0,#f56036 100%)!important;
+}
+
+.card-stats{
+	margin-bottom: 30px;
 }

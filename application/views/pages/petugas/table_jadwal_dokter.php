@@ -55,11 +55,11 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <form>
+      <form method="post" action="<?=base_url('petugas/tambah_jadwal')?>">
+        <div class="modal-body">
             <div class="form-group">
                 <label for="inputEmail4">Hari</label>
-                <select id="inputState" class="form-control">
+                <select name="hari" id="inputState" class="form-control">
                     <option value="" disabled selected>Pilih Hari</option>
                     <option value="Monday">Monday</option>
                     <option value="Tuesday">Tuesday</option>
@@ -70,18 +70,19 @@
             </div>
             <div class="form-group">
                 <label for="inputPassword4">Waktu Masuk</label>
-                <input type="text" placeholder="Masukan Jam Masuk dengan format (hh:mm)" class="form-control" id="inputPassword4">
+                <input name="waktu_mulai" type="time" placeholder="Masukan Jam Masuk dengan format (hh:mm)" class="form-control" id="inputPassword4">
             </div>
             <div class="form-group">
-                    <label for="inputPassword4">Waktu Keluar</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="Masukan Jam Keluar dengan format (hh:mm)">
+                <label for="inputPassword4">Waktu Keluar</label>
+                <input name="waktu_selesai" type="time" class="form-control" id="inputAddress" placeholder="Masukan Jam Keluar dengan format (hh:mm)">
             </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Tambah</button>
-      </div>
+          </div>
+          <input type="hidden" value="<?= $dokter_id?>" name="dokter_id"/>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Tambah</button>
+          </div>
+      </form>
     </div>
   </div>
 </div>
@@ -98,39 +99,41 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <form>
+      
+      <form method="post" action="<?=base_url('petugas/update_jadwal/'.$jadwal_dokter->jadwal_id.'/'.$dokter_id)?>">
+        <div class="modal-body">
             <div class="form-group">
                 <label for="inputEmail4">Hari</label>
-                <select value="<?= $jadwal_dokter->hari ?>" id="inputState" class="form-control">
+                <select name="hari" value="<?= $jadwal_dokter->hari ?>" id="inputState" class="form-control">
                     <option disabled>Pilih Hari</option>
-                    <option <?php if($jadwal_dokter->hari == "Monday") { echo 'selected'; }?> value="Monday">Monday</option>
-                    <option <?php if($jadwal_dokter->hari == "Tuesday") { echo 'selected'; }?> value="Tuesday">Tuesday</option>
-                    <option <?php if($jadwal_dokter->hari == "Wednesday") { echo 'selected'; }?> value="Wednesday">Wednesday</option>
-                    <option <?php if($jadwal_dokter->hari == "Thursday") { echo 'selected'; }?> value="Thursday">Thursday</option>
-                    <option <?php if($jadwal_dokter->hari == "Friday") { echo 'selected'; }?> value="Friday">Friday</option>
+                    <option  value="Monday">Monday</option>
+                    <option  value="Tuesday">Tuesday</option>
+                    <option  value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option  value="Friday">Friday</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="inputPassword4">Waktu Masuk</label>
-                <input type="text" value="<?= $jadwal_dokter->waktu_mulai ?>" placeholder="Masukan Jam Masuk dengan format (hh:mm)" class="form-control" id="inputPassword4">
+                <input name="waktu_mulai" type="time" value="<?= $jadwal_dokter->waktu_mulai ?>" placeholder="Masukan Jam Masuk dengan format (hh:mm)" class="form-control" id="inputPassword4">
             </div>
             <div class="form-group">
-                    <label for="inputPassword4">Waktu Keluar</label>
-                <input type="text" value="<?= $jadwal_dokter->waktu_selesai ?>" class="form-control" id="inputAddress" placeholder="Masukan Jam Keluar dengan format (hh:mm)">
+                <label for="inputPassword4">Waktu Keluar</label>
+                <input name="waktu_selesai" type="time" value="<?= $jadwal_dokter->waktu_selesai ?>" class="form-control" id="inputAddress" placeholder="Masukan Jam Keluar dengan format (hh:mm)">
             </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+            <input type="hidden" value="<?= $dokter_id?>" name="dokter_id"/>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+      </form>
     </div>
   </div>
 </div>
 
 <!-- Modal Hapus Dokter (Dialog) -->
-<div class="modal fade" id="hapus_dokter_modal_<?= $jadwal_dokter->jadwal_id ?>" tabindex="-1" role="dialog" aria-labelledby="hapus_dokter_modal_Title" aria-hidden="true">
+<div class="modal fade" id="hapus_jadwal_dokter_modal_<?= $jadwal_dokter->jadwal_id ?>" tabindex="-1" role="dialog" aria-labelledby="hapus_dokter_modal_Title" aria-hidden="true">
     <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -144,7 +147,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-        <button type="button" class="btn btn-primary">Ya</button>
+        <a href="<?=base_url('petugas/hapus_jadwal/'.$jadwal_dokter->jadwal_id.'/'.$dokter_id)?>" class="btn btn-primary">Ya</a>
       </div>
     </div>
   </div>

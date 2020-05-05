@@ -48,7 +48,12 @@ class Dokter extends Core_Controller {
             "notes" => $this->input->post('resume')
         );
 
-        $this->Appointment_model->update($appointment_id, $data);
+        $is_success = $this->Appointment_model->update($appointment_id, $data);
+        if($is_success){
+            $this->show_success_toast('Berhasil mengupdatew "finish" appointment.');
+        }else{
+            $this->show_error_toast('Gagal mengupdate appointment');
+        }
         redirect('dokter');
     }
 

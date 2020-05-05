@@ -24,14 +24,18 @@ class Core_Model extends CI_Model {
     public function delete($id){
         $this->db->where($this->table_id, $id);
         $this->db->delete($this->table_name);
+        return $this->db->affected_rows() > 0 ? true : false;
     }
 
     public function update($data, $id){
         $this->db->where($this->table_id, $id);
         $this->db->update($this->table_name, $data);
+
+        return $this->db->affected_rows() > 0 ? true : false;
     }
 
     public function insert($data){
         $this->db->insert($this->table_name, $data);
+        return $this->db->affected_rows() > 0 ? true : false;
     }
 }

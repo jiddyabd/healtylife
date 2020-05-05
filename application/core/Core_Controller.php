@@ -13,8 +13,9 @@ class Core_Controller extends CI_Controller {
     protected $show_custom_page_css;
 
     //Toast
-    protected $show_toast = false;
-    protected $toast;
+    protected $toast_visibility = 'hide';
+    protected $toast_msg = '';
+    protected $toast_type = 'default';
 
     /**
      * Core Controller for this webpro final task
@@ -62,6 +63,9 @@ class Core_Controller extends CI_Controller {
         $view_layout['_page'] =  $this->load->view($this->view_page, $this->view_data, true);
         $view_layout['_view_title'] = $this->view_title;
         $view_layout['_show_custom_page_css'] = $this->show_custom_page_css;
+
+        //Toast
+        $this->set_toast_props($view_layout);
 
         $this->load->view(TEMPLATE_DIR.TEMPLATE_BASE, $view_layout);
     }
@@ -112,15 +116,42 @@ class Core_Controller extends CI_Controller {
 
     /**
      * Toast
-     *  - Should showing when theres CRUD or any action happened need to be inform to users
+     *  - Should showing when theres CRUD or any action happened need to be inform the users
      *  - ...
      */
-    public function show_toast(){
-
+    private function set_toast_props(& $view_layout){
+        if($this->session->flashdata('show_toast') != null){
+            $this->toast_visibility = 'show';
+            $this->toast_msg = $this->session->flashdata('show_toast');
+            $this->toast_type = $this->session->flashdata('toast_type');
+        }
+        $view_layout['_toast_visibility'] = $this->toast_visibility;
+        $view_layout['_toast_msg'] = $this->toast_msg;
+        $view_layout['_toast_type'] = $this->toast_type;
+        $view_layout['_toast_label'] = $this->get_toast_type_label();
     }
 
-    public function hide_toast(){
+    public function show_toast($message){
+        $this->session->set_flashdata('show_toast', $message);
+        $this->session->set_flashdata('toast_type', 'default');
+    }
 
+    public function show_success_toast($message){
+        $this->show_toast($message);
+        $this->session->set_flashdata('toast_type', 'success');
+    }
+
+    public function show_error_toast($message){
+        $this->show_toast($message);
+        $this->session->set_flashdata('toast_type', 'error');
+    }
+
+    private function get_toast_type_label(){
+        switch($this->toast_type){
+            case 'default': return "Notification"; break;
+            case 'success': return "Success!"; break;
+            case 'error' : return "Error!"; break;
+        }
     }
     //#end toast func
 
@@ -156,6 +187,11 @@ class Core_Controller extends CI_Controller {
         $this->pagination->initialize($config);      
         $data['pagination'] = $this->pagination->create_links();
 
+    }
+
+    //Validation form
+    protected function is_input_text_more_than_min_chars($input_text, $min){
+        return strlen($input_text) >= $min;
     }
 
     //Utilities

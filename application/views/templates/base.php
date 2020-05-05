@@ -52,6 +52,33 @@
 
     </head>
     <body>
+
+        <!-- Toast -->
+        <div class="toast toast-<?= $_toast_type?>" role="alert" aria-live="polite" aria-atomic="true" data-delay="5000"  style="position: absolute; top: 50px; right: 100px;">
+            <div class="toast-header">
+                <strong class="mr-auto"></strong>
+                <small></small>
+                <button style="z-index: 13; color:white; opacity: 1; text-shadow: none" type="button" class="ml-2 mb-1 close toast-close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body _toast-body">
+                <div class="row">
+                    <div class="col-md-2 text-center">
+                        <span class="toast-icon text-center">
+                            <i class="fa fa-check-circle"></i>
+                        </span>
+                    </div>
+                    <div class="col-md-10" style="padding-top:10px">
+                        <strong class="mr-auto"><?= $_toast_label ?></strong>
+                        <p>
+                            <?= $_toast_msg ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <?php if(!empty($sidebar) && $sidebar) { echo $sidebar; }?>
 
         <?php if(!empty($sidebar) && $sidebar) {?>
@@ -83,6 +110,6 @@
 
     <!-- Showing toast scripts -->
     <script>
-        
+        $('.toast').toast('<?= $_toast_visibility?>');
     </script>
 </html>

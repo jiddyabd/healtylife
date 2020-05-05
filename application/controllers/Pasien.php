@@ -62,8 +62,13 @@ class Pasien extends Core_Controller {
             "is_denied" => null,
         );
 
-        $this->Pasien_model->insert($data_pasien);
-        $this->Appointment_model->insert($data_appointment);
+        $is_success_data_pasien = $this->Pasien_model->insert($data_pasien);
+        $is_success_data_appointment = $this->Appointment_model->insert($data_appointment);
+        if($is_success_data_pasien && $is_success_data_appointment){
+            $this->show_success_toast('Berhasil menambahkan appointment.');
+        }else{
+            $this->show_error_toast('Gagal menambahkan appointment');
+        }
         redirect('pasien/appointment_mendatang');
     }
 

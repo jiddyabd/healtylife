@@ -57,28 +57,30 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <form>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputEmail4">Id</label>
-                    <input type="text" placeholder="Masukan Id Username (min. 6 karakter)" class="form-control" id="inputEmail4">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputPassword4">Password</label>
-                    <input type="text" placeholder="Masukan Password (min 8 karakter)" class="form-control" id="inputPassword4">
-                </div>
+      <form method="post" action="<?=base_url('petugas/tambah_dokter')?>">
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="inputEmail4">Id</label>
+                <input name="dokter_id" type="text" placeholder="Masukan Id Username (min. 6 karakter)" class="form-control" id="inputEmail4">
             </div>
             <div class="form-group">
                 <label for="inputAddress">Nama Dokter</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="Masukan nama dokter">
+                <input name="nama_dokter" type="text" class="form-control" id="inputAddress" placeholder="Masukan nama dokter">
             </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Tambah</button>
-      </div>
+            <div class="form-group">
+                <label for="inputPassword4">Password</label>
+                <input name="password" type="password" placeholder="Masukan Password (min 8 karakter)" class="form-control" id="inputPassword4">
+            </div>
+            <div class="form-group">
+                <label for="inputPassword4">Confirm Password</label>
+                <input name="cpassword" type="password" placeholder="Masukan Password (min 8 karakter)" class="form-control" id="inputPassword4">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Tambah</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -94,28 +96,22 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <form>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputEmail4">Id</label>
-                    <input disabled type="text" class="form-control" value="<?= $dokter->dokter_id ?>" id="inputEmail4">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputPassword4">Password</label>
-                    <input disabled type="text" value="Password hanya bisa diganti oleh dokter." class="form-control" id="inputPassword4">
-                </div>
+      <form method="post" action="<?=base_url('petugas/update_dokter/'.$dokter->dokter_id)?>">
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="inputEmail4">Id</label>
+                <input disabled value="<?= $dokter->dokter_id?>" type="text" placeholder="Masukan Id Username (min. 6 karakter)" class="form-control" id="inputEmail4">
             </div>
             <div class="form-group">
                 <label for="inputAddress">Nama Dokter</label>
-                <input type="text" class="form-control" id="inputAddress" value="<?= $dokter->nama_dokter ?>" placeholder="Masukan nama dokter">
+                <input value="<?= $dokter->nama_dokter?>" name="nama_dokter" type="text" class="form-control" id="inputAddress" placeholder="Masukan nama dokter">
             </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Update</button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
     </div>
   </div>
 </div>
@@ -135,7 +131,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-        <button type="button" class="btn btn-primary">Ya</button>
+        <a href="<?=base_url('petugas/hapus_dokter/'.$dokter->dokter_id)?>" class="btn btn-primary">Ya</a>
       </div>
     </div>
   </div>

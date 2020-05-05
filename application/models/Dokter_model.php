@@ -9,6 +9,7 @@ class Dokter_model extends Core_Model{
     public function get_list($limit, $start){
         $this->db->from('dokter', $limit, $start);
         $this->db->order_by("dokter_id", "asc");
+        $this->db->where('is_delete', false);
         $this->db->limit($limit, $start);
         $query = $this->db->get();
         return $query->result();

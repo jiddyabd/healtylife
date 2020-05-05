@@ -16,7 +16,7 @@
                             <th scope="col">Nama Pasien</th>
                             <th scope="col">Tanggal Lahir</th>
                             <th scope="col">Jenis Kelamin</th>
-                            <th scope="col">Aksi</th>
+                            <!-- <th scope="col">Aksi</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -27,9 +27,9 @@
                                 <td><?= $pasien->nama_pasien?></td>
                                 <td><?= $pasien->tanggal_lahir?></td>
                                 <td><?= $pasien->jenis_kelamin?></td>
-                                <td>
+                                <!-- <td>
                                     <button data-toggle="modal" data-target="#hapus_pasien_modal_<?= $pasien->pasien_id ?>" class="btn btn-danger">Hapus</button>
-                                </td>
+                                </td> -->
                             </tr>
                             <?php }; ?>
                         </tbody>

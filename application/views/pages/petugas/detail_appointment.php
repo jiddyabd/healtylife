@@ -5,12 +5,10 @@
                 <div class="card-header">
                     
                     <div class="d-flex justify-content-between align-items-center">
-                        <b>Form Penerimaan Appointment</b>
+                        <b>Form Detail Appointment</b>
                     </div>
                 </div>
                 <div class="card-body">
-                  <form action="<?=base_url('petugas/submit_accept_appointment/').$appointment->appointment_id?>" method="post">
-                  
                     <h6 class="card-title form-divide-title">JADWAL DAN LAYANAN</h6>
                     <p class="card-text">
                       <div class="row">
@@ -79,14 +77,14 @@
                     </p>
 
                     <hr>
-                    <h6 class="card-title form-divide-title">PILIH DOKTER</h6>
+                    <h6 class="card-title form-divide-title">DETAIL DOKTER DAN JADWALNYA</h6>
                     <p class="card-text">
                     <div class="row">
                         <div class="col-md-6">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Dokter Tersedia</label>
-                            <select name="jadwal_dokter" name="jenis_layanan" id="inputState" class="form-control">
-                                <option selected disabled>Pilih Dokter</option>
+                            <label for="exampleInputEmail1">Dokter dan Jadwalnya</label>
+                            <select disabled value="<?=$appointment->jadwal_id.' | '.$appointment->dokter_id?>" name="jadwal_dokter" name="jenis_layanan" id="inputState" class="form-control">
+                                <option disabled>Pilih Dokter</option>
                                 <?php foreach($list_available_dokter as $dokter){ ?>
                                   <option value="<?=$dokter->jadwal_id.' | '.$dokter->dokter_id?>"><?= $dokter->nama_dokter.' | Hari: '.$dokter->hari_on_id.' ('.$dokter->waktu_mulai.' - '.$dokter->waktu_selesai.')' ?></option>
                                 <?php }?>
@@ -95,8 +93,7 @@
                         </div>
                     </div>
                     </p>
-                    <button type="submit" class="btn btn-primary">Terima</button>
-                  </form>
+                    <a href="<?=base_url('petugas/view_appointment')?>" class="btn btn-primary">Kembali</a>
                 </div>
             </div>
         </div>

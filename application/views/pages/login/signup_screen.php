@@ -1,8 +1,15 @@
 <div style="padding: 35px; background-color: #f8fbf9; min-height: calc(100vh - 145px);">
     <div class="row">
         <div class="col-md-7">
-            <div class="login-img">
-                <img src="<?= base_url('assets/img/login_1.svg')?>" class="img-fluid">
+            <div id="carouselExampleSlidesOnly" class="carousel slide login-img" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="<?= base_url('assets/img/login_1.svg')?>" class="img-fluid">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="<?= base_url('assets/img/login_3.svg')?>" class="img-fluid">
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-5" style="padding-left: 50px;">

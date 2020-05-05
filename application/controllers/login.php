@@ -70,6 +70,7 @@
                 return;
             };
 
+            $this->show_error_toast('Username atau password salah.');
             redirect('login/sign_in');
         }
         
@@ -82,6 +83,7 @@
             $no_telp = $this->input->post('no_telp');
 
             if($password != $cpassword){
+                $this->show_error_toast('Kolom password dan konfirmasi harus sama');
                 redirect('login/sign_up');
             }
 
@@ -91,18 +93,24 @@
                 "password" => $password,
                 "email" => $email,
                 "no_telp" => $no_telp,
+                "is_delete" => false
             );
 
-            $this->User_model->insert($data);
+            $is_success = $this->User_model->insert($data);
+            if($is_success){
+                $this->show_success_toast('Selamat datang di Immunihealth :)');
+                $user_session_data = array(
+                    "id" => $username,
+                    "nama" => $name,
+                    "role" => PASIEN,
+                );
+                $this->session->set_userdata("user_session", $user_session_data);
+                redirect('pasien');
+            }else{
+                $this->show_error_toast('Gagal melakukan registrasi');
+                redirect('login/sign_up');
+            }
 
-            $user_session_data = array(
-                "id" => $username,
-                "nama" => $name,
-                "role" => PASIEN,
-            );
-            $this->session->set_userdata("user_session", $user_session_data);
-
-            redirect('pasien');
         }
     }
 
