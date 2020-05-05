@@ -1,8 +1,9 @@
 <?php
-class Dokter_model extends CI_Model{
-    public function get_all()
-        {$query = $this->db->get('dokter');
-        return $query->result();
+class Dokter_model extends Core_Model{
+    public function __construct(){
+        parent::__construct();
+        $table_naem = 'dokter';
+        $table_id = 'dokter_id';
     }
 
     public function get_list($limit, $start){
@@ -11,17 +12,6 @@ class Dokter_model extends CI_Model{
         $this->db->limit($limit, $start);
         $query = $this->db->get();
         return $query->result();
-    }
-    
-    public function count_all(){
-        return $this->db->count_all('dokter');
-    }
-
-    
-    public function get_by_dokter_id($dokter_id){
-        $this->db->where('dokter_id', $dokter_id);
-        $query = $this->db->get('dokter');
-        return $query->row();
     }
 
     public function is_password_and_username_valid($username, $password){

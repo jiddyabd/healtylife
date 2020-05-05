@@ -1,8 +1,9 @@
 <?php
-class Layanan_model extends CI_Model{
-    public function get_all()
-        {$query = $this->db->get('layanan');
-        return $query->result();
+class Layanan_model extends Core_Model{
+    public function __construct(){
+        parent::__construct();
+        $table_naem = 'layanan';
+        $table_id = 'layanan_id';
     }
 
     public function get_list($limit, $start){
@@ -13,8 +14,5 @@ class Layanan_model extends CI_Model{
         return $query->result();
     }
     
-    public function count_all(){
-        return $this->db->count_all('layanan');
-    }
 }
 ?>

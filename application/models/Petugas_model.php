@@ -1,8 +1,9 @@
 <?php
-class Petugas_model extends CI_Model{
-    public function get_all()
-        {$query = $this->db->get('petugas');
-        return $query->result();
+class Petugas_model extends Core_Model{
+    public function __construct(){
+        parent::__construct();
+        $table_naem = 'petugas';
+        $table_id = 'petugas_id';
     }
 
     public function get_list($limit, $start){
@@ -11,10 +12,6 @@ class Petugas_model extends CI_Model{
         $this->db->limit($limit, $start);
         $query = $this->db->get();
         return $query->result();
-    }
-    
-    public function count_all(){
-        return $this->db->count_all('petugas');
     }
 
     public function is_password_and_username_valid($username, $password){

@@ -1,8 +1,9 @@
 <?php
-class User_model extends CI_Model{
-    public function get_all()
-        {$query = $this->db->get('user');
-        return $query->result();
+class User_model extends Core_Model{
+    public function __construct(){
+        parent::__construct();
+        $table_naem = 'user';
+        $table_id = 'user_id';
     }
 
     public function get_list($limit, $start){
@@ -13,26 +14,11 @@ class User_model extends CI_Model{
         return $query->result();
     }
     
-    public function count_all(){
-        return $this->db->count_all('user');
-    }
-
-    
-    public function get_by_user_id($user_id){
-        $this->db->where('user_id', $user_id);
-        $query = $this->db->get('user');
-        return $query->row();
-    }
-    
     public function is_password_and_username_valid($username, $password){
         $this->db->where('user_id', $username);
         $this->db->where('password', $password);
         $query = $this->db->get('user');
         return $query->row();
-    }
-
-    public function sign_up($data){
-        $this->db->insert('user', $data);
     }
 }
 ?>

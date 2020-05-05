@@ -1,8 +1,9 @@
 <?php
-class Jadwal_model extends CI_Model{
-    public function get_all()
-        {$query = $this->db->get('jadwal');
-        return $query->result();
+class Jadwal_model extends Core_Model{
+    public function __construct(){
+        parent::__construct();
+        $table_naem = 'jadwal';
+        $table_id = 'jadwal_id';
     }
 
     public function get_list($limit, $start){
@@ -11,10 +12,6 @@ class Jadwal_model extends CI_Model{
         $this->db->limit($limit, $start);
         $query = $this->db->get();
         return $query->result();
-    }
-    
-    public function count_all(){
-        return $this->db->count_all('jadwal');
     }
 
     public function get_list_by_dokter_id($dokter_id, $limit, $start){
@@ -25,10 +22,5 @@ class Jadwal_model extends CI_Model{
         return $query->result();
     }
     
-    public function get_by_jadwal_id($jadwal_id){
-        $this->db->where('jadwal_id', $jadwal_id);
-        $query = $this->db->get('jadwal');
-        return $query->row();
-    }
 }
 ?>

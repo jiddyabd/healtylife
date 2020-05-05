@@ -75,7 +75,7 @@ class Petugas extends Core_Controller {
     }
 
     public function jadwal_dokter($dokter_id){
-        $data['dokter'] = $this->Dokter_model->get_by_dokter_id($dokter_id);
+        $data['dokter'] = $this->Dokter_model->get_by_id($dokter_id);
 
         //Paginate
         $items_per_page = 10;
@@ -90,6 +90,7 @@ class Petugas extends Core_Controller {
         $this->show_layout(LOGGEDIN_LAYOUT, $data);
     }
 
+    //Daftar layanan
     public function view_layanan(){
         $this->view_title = 'List Layanan Immunihealth';
 
@@ -105,6 +106,8 @@ class Petugas extends Core_Controller {
         $this->show_layout(LOGGEDIN_LAYOUT, $data);
 
     }
+
+    //End daftar layanan
 
     //Appointment
     public function view_appointment(){
@@ -154,6 +157,8 @@ class Petugas extends Core_Controller {
         redirect('petugas/view_appointment');
     }
 
+
+    // Daftar petugas
     public function view_petugas(){
         $this->view_title = 'List Petugas Immunihealth';
 
@@ -170,6 +175,34 @@ class Petugas extends Core_Controller {
         $this->view_page = DIR_PETUGAS_PAGES.'/table_petugas';
         $this->show_layout(LOGGEDIN_LAYOUT, $data);
     }
+    
+    public function tambah_petugas(){
+        $data_petugas = array(
+            "petugas_id" => $this->input->post('petugas_id'),
+            "nama_petugas" => $this->input->post('nama_petugas'),
+            "password" => $this->input->post('password')
+        );
+
+        $this->Petugas_model->insert($data_petugas);
+        redirect('petugas/view_petugas');
+    }
+
+    public function edit_petugas($id){
+        $data_petugas = array(
+            "nama_petugas" => $this->input->post('nama_petugas')
+        );
+
+        $this->Petugas_model->update($data_petugas, $id);
+        redirect('petugas/view_petugas');
+
+        //TODO if it self than change current session profile name ULOL
+    }
+
+    public function hapus_petugas($id){
+        $this->Petugas_model->delete($id);
+        redirect('petugas/view_petugas');
+    }
+    //End daftar petugas
 
 
     public function logout(){
