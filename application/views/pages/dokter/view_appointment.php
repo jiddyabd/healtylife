@@ -91,7 +91,7 @@
           <hr>
           <div class="form-group">
               <label for="inputAddress">Resume</label>
-              <textarea name="resume" rows="8" class="form-control" id="inputAddress" placeholder="Tuliskan Resume Appointment"></textarea>
+              <textarea required name="resume" rows="8" class="form-control" id="inputAddress" placeholder="Tuliskan Resume Appointment"></textarea>
           </div>
       </div>
       <div class="modal-footer">

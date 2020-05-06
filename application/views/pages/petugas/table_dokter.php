@@ -66,19 +66,19 @@
         <div class="modal-body">
             <div class="form-group">
                 <label for="inputEmail4">Id</label>
-                <input name="dokter_id" type="text" placeholder="Masukan Id Username (min. 6 karakter)" class="form-control" id="inputEmail4">
+                <input required name="dokter_id" type="text" placeholder="Masukan Id Username (min. 6 karakter)" class="form-control" id="inputEmail4">
             </div>
             <div class="form-group">
                 <label for="inputAddress">Nama Dokter</label>
-                <input name="nama_dokter" type="text" class="form-control" id="inputAddress" placeholder="Masukan nama dokter">
+                <input required name="nama_dokter" type="text" class="form-control" id="inputAddress" placeholder="Masukan nama dokter">
             </div>
             <div class="form-group">
                 <label for="inputPassword4">Password</label>
-                <input name="password" type="password" placeholder="Masukan Password (min 8 karakter)" class="form-control" id="inputPassword4">
+                <input required name="password" type="password" placeholder="Masukan Password (min 8 karakter)" class="form-control" id="inputPassword4">
             </div>
             <div class="form-group">
                 <label for="inputPassword4">Confirm Password</label>
-                <input name="cpassword" type="password" placeholder="Masukan Password (min 8 karakter)" class="form-control" id="inputPassword4">
+                <input required name="cpassword" type="password" placeholder="Masukan Password (min 8 karakter)" class="form-control" id="inputPassword4">
             </div>
         </div>
         <div class="modal-footer">
@@ -109,7 +109,7 @@
             </div>
             <div class="form-group">
                 <label for="inputAddress">Nama Dokter</label>
-                <input value="<?= $dokter->nama_dokter?>" name="nama_dokter" type="text" class="form-control" id="inputAddress" placeholder="Masukan nama dokter">
+                <input required value="<?= $dokter->nama_dokter?>" name="nama_dokter" type="text" class="form-control" id="inputAddress" placeholder="Masukan nama dokter">
             </div>
           </div>
           <div class="modal-footer">

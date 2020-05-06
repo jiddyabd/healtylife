@@ -17,13 +17,13 @@
                           <div class="col-md-4">
                             <div class="form-group">
                               <label for="exampleInputEmail1">Tanggal dan Waktu</label>
-                              <input name="tgl_waktu_permintaan" type="datetime-local" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                              <input required name="tgl_waktu_permintaan" type="datetime-local" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                             </div>
                         </div>
                         <div class="col-md-4">
                           <div class="form-group">
                             <label for="inputEmail4">Layanan</label>
-                            <select name="jenis_layanan" id="inputState" class="form-control">
+                            <select required name="jenis_layanan" id="inputState" class="form-control">
                                 <option selected disabled>Pilih Layanan</option>
                                 <?php foreach($list_layanan as $layanan){ ?>
                                   <option value="<?=$layanan->layanan_id?>"><?= $layanan->grup.'-'.$layanan->jenis_layanan ?></option>
@@ -41,13 +41,13 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="exampleInputEmail1">Nama Pasiem</label>
-                            <input name="nama_pasien" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <input required name="nama_pasien" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="exampleInputEmail1">Tanggal Lahir</label>
-                            <input name="tgl_lahir_pasien" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <input required name="tgl_lahir_pasien" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                           </div>
                         </div>
                       </div>
@@ -55,7 +55,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                               <label for="inputEmail4">Jenis Kelamin</label>
-                              <select name="jenis_kelamin_pasien" id="inputState" class="form-control">
+                              <select required name="jenis_kelamin_pasien" id="inputState" class="form-control">
                                   <option selected disabled>Pilih Jenis Kelamin</option>
                                   <option value="Laki-laki">Laki-laki</option>
                                   <option value="Perempuan">Perempuan</option>
@@ -72,7 +72,7 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="exampleInputEmail1">Nama Wali</label>
-                            <input name="nama_wali" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <input required name="nama_wali" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                           </div>
                         </div>
                       </div>

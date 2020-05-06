@@ -62,15 +62,15 @@
               <div class="form-row">
                   <div class="form-group col-md-6">
                       <label for="inputEmail4">Id</label>
-                      <input type="text" placeholder="Masukan Id Username (min. 6 karakter)" class="form-control" name="petugas_id">
+                      <input required type="text" placeholder="Masukan Id Username (min. 6 karakter)" class="form-control" name="petugas_id">
                   </div>
                   <div class="form-group col-md-6">
                       <label for="inputPassword4">Password</label>
-                      <input type="password" placeholder="Masukan Password (min 8 karakter)" class="form-control" name="password">
+                      <input required type="password" placeholder="Masukan Password (min 8 karakter)" class="form-control" name="password">
                   </div>
                   <div class="form-group col-md-6">
                       <label for="inputPassword4">Confirm Password</label>
-                      <input type="password" placeholder="Masukan Password (min 8 karakter)" class="form-control" name="cpassword">
+                      <input required type="password" placeholder="Masukan Password (min 8 karakter)" class="form-control" name="cpassword">
                   </div>
               </div>
             <div class="form-group">
@@ -112,7 +112,7 @@
               </div>
               <div class="form-group">
                   <label for="inputAddress">Nama Petugas</label>
-                  <input value="<?= $petugas->nama_petugas?>" type="text" class="form-control" name="nama_petugas" placeholder="Masukan nama Petugas">
+                  <input required value="<?= $petugas->nama_petugas?>" type="text" class="form-control" name="nama_petugas" placeholder="Masukan nama Petugas">
               </div>
         </div>
         <div class="modal-footer">

@@ -85,7 +85,7 @@
                         <div class="col-md-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Dokter Tersedia</label>
-                            <select name="jadwal_dokter" name="jenis_layanan" id="inputState" class="form-control">
+                            <select required name="jadwal_dokter" name="jenis_layanan" id="inputState" class="form-control">
                                 <option selected disabled>Pilih Dokter</option>
                                 <?php foreach($list_available_dokter as $dokter){ ?>
                                   <option value="<?=$dokter->jadwal_id.' | '.$dokter->dokter_id?>"><?= $dokter->nama_dokter.' | Hari: '.$dokter->hari_on_id.' ('.$dokter->waktu_mulai.' - '.$dokter->waktu_selesai.')' ?></option>
