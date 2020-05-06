@@ -88,6 +88,20 @@ class Pasien extends Core_Controller {
 
     }
 
+    public function ganti_jadwal_appointment($appointment_id){
+        $data_appointment = array(
+            "tgl_waktu_permintaan" => $this->input->post('tgl_waktu_permintaan')
+        );
+
+        $is_sucesss = $this->Appointment_model->update($data_appointment, $appointment_id);
+        if($is_sucesss){
+            $this->show_success_toast('Berhasil mengganti jadwal appointment.');
+        }else{
+            $this->show_error_toast('Gagal  mengganti jadwal appointment');
+        }
+        redirect('pasien/appointment_mendatang');
+    }
+
     public function riwayat_appointment(){
         $this->view_title = 'Riwayat Appointment';
 
@@ -101,8 +115,56 @@ class Pasien extends Core_Controller {
 
         $this->view_page = DIR_PASIEN_PAGES.'/history_appointment';
         $this->show_layout(LOGGEDIN_LAYOUT, $data);
+    }
 
+    
+    public function edit_profile(){
+        $this->view_title = 'My Profile';
+        $this->view_page = DIR_PASIEN_PAGES.'/edit_profile';
+        $data['user'] = $this->User_model->get_by_id($this->get_user_id());
+        $this->show_layout(LOGGEDIN_LAYOUT, $data);
+    }
 
+    public function submit_edit_profile(){
+        if(($this->input->post('password') != null || $this->input->post('password') != '') || $this->input->post('cpassword') != null || $this->input->post('cpassword') != ''){
+            if(strlen($this->input->post('password')) < 8){
+                $this->show_error_toast('Password anda harus lebih dari 8 karakter');
+                redirect('user/edit_profile');
+            }
+            if($this->input->post('password') != $this->input->post('cpassword')){
+                $this->show_error_toast('Kolom password dan konfirmasi harus sama');
+                redirect('user/edit_profile');
+            }
+            $data_profile = array(
+                "nama_user" => $this->input->post('user_name'),
+                "email" => $this->input->post('email'),
+                "no_telp" => $this->input->post('no_telp'),
+                "password" => $this->input->post('password'),
+            );
+        }else{
+            $data_profile = array(
+                "nama_user" => $this->input->post('user_name'),
+                "email" => $this->input->post('email'),
+                "no_telp" => $this->input->post('no_telp'),
+            );
+        }
+
+        $is_success = $this->User_model->update($data_profile, $this->get_user_id());
+        if($is_success){
+            //Update session
+            $user_session_data = array(
+                "id" => $this->get_user_id(),
+                "nama" => $this->input->post('user_name'),
+                "role" => PASIEN,
+            );
+            $this->session->set_userdata("user_session", $user_session_data);
+
+            $this->show_success_toast('Berhasil mengupdate data profile anda.');
+        }else{
+            $this->show_error_toast('Gagal mengupdate data profile anda');
+        }
+        
+        redirect('pasien/edit_profile');
     }
 
     public function logout(){

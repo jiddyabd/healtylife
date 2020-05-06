@@ -23,6 +23,11 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php if(count($list_dokter) <= 0){ ?>
+                            <tr>
+                                <td class="text-center" colspan="5">Immunihealth belum memiliki dokter.</td>
+                            </tr>
+                            <?php }else{ ?>
                             <?php $table_number = ++$curr_page?>
                             <?php foreach($list_dokter as $dokter){?>
                             <tr>
@@ -37,7 +42,7 @@
                                     <button data-toggle="modal" data-target="#hapus_dokter_modal_<?= $dokter->dokter_id ?>" class="btn btn-danger">Hapus</button>
                                 </td>
                             </tr>
-                            <?php }; ?>
+                            <?php }; }; ?>
                         </tbody>
                     </table>
                     <?php echo $pagination; ?> 

@@ -16,8 +16,8 @@
                       <div class="row">
                           <div class="col-md-4">
                             <div class="form-group">
-                            <label for="exampleInputEmail1">Tanggal dan Waktu</label>
-                            <input name="tgl_waktu_permintaan" type="datetime-local" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                              <label for="exampleInputEmail1">Tanggal dan Waktu</label>
+                              <input name="tgl_waktu_permintaan" type="datetime-local" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                             </div>
                         </div>
                         <div class="col-md-4">

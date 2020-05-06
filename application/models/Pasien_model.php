@@ -56,5 +56,7 @@ class Pasien_model extends Core_Model{
         $query = $this->db->get();
         return $query->result();
     }
+
+    
 }
 ?>

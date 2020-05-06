@@ -23,6 +23,11 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php if(count($list_appointment) <= 0){ ?>
+                            <tr>
+                                    <td class="text-center" colspan="8">Anda belum memiliki riwayat kerja.</td>
+                            </tr>
+                            <?php }else{ ?>
                             <?php $table_number = ++$curr_page?>
                             <?php foreach($list_appointment as $appointment){?>
                             <tr>
@@ -39,7 +44,7 @@
                                     <?= $appointment->grup.' - '.$appointment->jenis_layanan?>
                                 </td>
                             </tr>
-                            <?php }; ?>
+                            <?php }; }; ?>
                         </tbody>
                     </table>
                     <?php echo $pagination; ?> 

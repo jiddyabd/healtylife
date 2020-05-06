@@ -26,6 +26,12 @@
                             </tr>
                         </thead>
                         <tbody>
+                          
+                            <?php if(count($list_appointment) <= 0){ ?>
+                            <tr>
+                                <td class="text-center" colspan="11">Anda belum memiliki daftar appointment mendatang.</td>
+                            </tr>
+                            <?php }else{ ?>
                             <?php $table_number = ++$curr_page?>
                             <?php foreach($list_appointment as $appointment){?>
                             <tr>
@@ -59,13 +65,13 @@
                                 </td>
                                 <td>
                                     <?php if(is_null($appointment->is_acc)){ ?>
-                                        <button data-toggle="modal" data-target="#edit_appointment_modal_<?= $appointment->appointment_id ?>" class="btn btn-warning">Ganti Jadwal</button>
+                                        <button data-toggle="modal" data-target="#ganti_jadwal_appointment_modal_<?= $appointment->appointment_id ?>" class="btn btn-warning">Ganti Jadwal</button>
                                     <?php }else if($appointment->is_acc){ ?>
                                     -
                                     <?php }; ?>
                                 </td>
                             </tr>
-                            <?php }; ?>
+                            <?php }; }; ?>
                         </tbody>
                     </table>
                     <?php echo $pagination; ?> 
@@ -75,96 +81,34 @@
     </div>
 </div>
 
-<!-- Modal Tambah appointment -->
-<div class="modal fade" id="tambah_appointment_modal" tabindex="-1" role="dialog" aria-labelledby="edit_appointment_modal_Title" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="edit_appointment_modal_Title">Tambah Data appointment</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputEmail4">Id</label>
-                    <input type="text" placeholder="Masukan Id Username (min. 6 karakter)" class="form-control" id="inputEmail4">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputPassword4">Password</label>
-                    <input type="text" placeholder="Masukan Password (min 8 karakter)" class="form-control" id="inputPassword4">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputAddress">Nama appointment</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="Masukan nama appointment">
-            </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Tambah</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal Edit appointment -->
+<!-- Modal Ganti Jadwal appointment -->
 <?php foreach($list_appointment as $appointment) { ?>
 
-<div class="modal fade" id="edit_appointment_modal_<?= $appointment->appointment_id ?>" tabindex="-1" role="dialog" aria-labelledby="edit_appointment_modal_Title" aria-hidden="true">
+<div class="modal fade" id="ganti_jadwal_appointment_modal_<?= $appointment->appointment_id ?>" tabindex="-1" role="dialog" aria-labelledby="ganti_jadwal_appointment_modal_Title" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="edit_appointment_modal_Title">Edit Data appointment</h5>
+        <h5 class="modal-title" id="ganti_jadwal_appointment_modal_Title">Ganti Jadwal Appointment</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <form>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputEmail4">Id</label>
-                    <input disabled type="text" class="form-control" value="<?= $appointment->appointment_id ?>" id="inputEmail4">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputPassword4">Password</label>
-                    <input disabled type="text" value="Password hanya bisa diganti oleh appointment." class="form-control" id="inputPassword4">
-                </div>
+      <form method="post" action="<?=base_url('pasien/ganti_jadwal_appointment/'.$appointment->appointment_id)?>">
+        <div class="modal-body">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Tanggal dan Waktu Sebelum</label>
+              <input disabled value="<?= date('Y-m-d\TH:i:s', strtotime($appointment->tgl_waktu_permintaan))?>" type="datetime-local" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
             <div class="form-group">
-                <label for="inputAddress">Nama appointment</label>
-                <input type="text" class="form-control" id="inputAddress" value="<?= $appointment->nama_appointment ?>" placeholder="Masukan nama appointment">
+              <label for="exampleInputEmail1">Tanggal dan Waktu Setelah Diganti</label>
+              <input value="<?= date('Y-m-d\TH:i:s', strtotime($appointment->tgl_waktu_permintaan))?>" type="datetime-local" name="tgl_waktu_permintaan" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Hapus appointment (Dialog) -->
-<div class="modal fade" id="hapus_appointment_modal_<?= $appointment->appointment_id ?>" tabindex="-1" role="dialog" aria-labelledby="hapus_appointment_modal_Title" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Hapus Data appointment</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Apakah anda yakin ingin menghapus data appointment ini ?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-        <button type="button" class="btn btn-primary">Ya</button>
-      </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+      </form>
     </div>
   </div>
 </div>

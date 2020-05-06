@@ -21,6 +21,11 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php if(count($list_layanan) <= 0){ ?>
+                            <tr>
+                                <td class="text-center" colspan="4">Immunihealth belum memiliki layanan.</td>
+                            </tr>
+                            <?php }else{ ?>
                             <?php $table_number = ++$curr_page?>
                             <?php foreach($list_layanan as $layanan){?>
                             <tr>
@@ -32,7 +37,7 @@
                                     <button data-toggle="modal" data-target="#hapus_layanan_modal_<?= $layanan->layanan_id ?>" class="btn btn-danger">Hapus</button>
                                 </td>
                             </tr>
-                            <?php }; ?>
+                            <?php }; }; ?>
                         </tbody>
                     </table>
                     <?php echo $pagination; ?> 

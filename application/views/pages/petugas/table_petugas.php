@@ -21,6 +21,11 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php if(count($list_petugas) <= 0){ ?>
+                            <tr>
+                                <td class="text-center" colspan="4">Immunihealth belum memiliki petugas.</td>
+                            </tr>
+                            <?php }else{ ?>
                             <?php $table_number = ++$curr_page?>
                             <?php foreach($list_petugas as $petugas){?>
                             <tr>
@@ -32,7 +37,7 @@
                                     <button data-toggle="modal" data-target="#hapus_petugas_modal_<?= $petugas->petugas_id ?>" class="btn btn-danger">Hapus</button>
                                 </td>
                             </tr>
-                            <?php }; ?>
+                            <?php }; }; ?>
                         </tbody>
                     </table>
                     <?php echo $pagination; ?> 
@@ -63,11 +68,15 @@
                       <label for="inputPassword4">Password</label>
                       <input type="password" placeholder="Masukan Password (min 8 karakter)" class="form-control" name="password">
                   </div>
+                  <div class="form-group col-md-6">
+                      <label for="inputPassword4">Confirm Password</label>
+                      <input type="password" placeholder="Masukan Password (min 8 karakter)" class="form-control" name="cpassword">
+                  </div>
               </div>
             <div class="form-group">
-                  <label for="inputAddress">Nama Petugas</label>
-                  <input type="text" class="form-control" name="nama_petugas" placeholder="Masukan nama Petugas">
-              </div>
+                <label for="inputAddress">Nama Petugas</label>
+                <input type="text" class="form-control" name="nama_petugas" placeholder="Masukan nama Petugas">
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

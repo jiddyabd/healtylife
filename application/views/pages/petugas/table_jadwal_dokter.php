@@ -23,6 +23,11 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php if(count($list_jadwal_dokter) <= 0){ ?>
+                            <tr>
+                                <td class="text-center" colspan="5">Dokter ini belum memiliki jadwal kerja.</td>
+                            </tr>
+                            <?php }else{ ?>
                             <?php $table_number = ++$curr_page?>
                             <?php foreach($list_jadwal_dokter as $jadwal_dokter){?>
                             <tr>
@@ -35,7 +40,7 @@
                                     <button data-toggle="modal" data-target="#hapus_jadwal_dokter_modal_<?= $jadwal_dokter->jadwal_id ?>" class="btn btn-danger">Hapus</button>
                                 </td>
                             </tr>
-                            <?php }; ?>
+                            <?php }; }; ?>
                         </tbody>
                     </table>
                     <?php echo $pagination; ?> 

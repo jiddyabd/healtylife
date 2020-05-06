@@ -23,6 +23,11 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php if(count($list_appointment) <= 0){ ?>
+                            <tr>
+                                <td class="text-center" colspan="8">Anda belum memiliki in-progresse appointment.</td>
+                            </tr>
+                            <?php }else{ ?>
                             <?php $table_number = ++$curr_page?>
                             <?php foreach($list_appointment as $appointment){?>
                             <tr>
@@ -39,7 +44,7 @@
                                     <button data-toggle="modal" data-target="#finish_appointment_modal_<?= $appointment->appointment_id ?>" class="btn btn-info">Selesai</button>
                                 </td>
                             </tr>
-                            <?php }; ?>
+                            <?php }; }; ?>
                         </tbody>
                     </table>
                     <?php echo $pagination; ?> 

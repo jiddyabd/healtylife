@@ -24,6 +24,11 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php if(count($list_appointment) <= 0){ ?>
+                            <tr>
+                                <td class="text-center" colspan="9">Anda belum memiliki daftar riwayat appointment.</td>
+                            </tr>
+                            <?php }else{ ?>
                             <?php $table_number = ++$curr_page?>
                             <?php foreach($list_appointment as $appointment){?>
                             <tr>
@@ -37,7 +42,7 @@
                                 <td><?= $appointment->hari.', '.$appointment->waktu_mulai.' - '.$appointment->waktu_selesai?></td></td>
                                 <td><?= $appointment->grup.' - '.$appointment->jenis_layanan?></td></td>
                             </tr>
-                            <?php }; ?>
+                            <?php }; }; ?>
                         </tbody>
                     </table>
                     <?php echo $pagination; ?> 

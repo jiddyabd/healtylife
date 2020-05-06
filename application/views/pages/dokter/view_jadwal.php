@@ -19,6 +19,11 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php if(count($list_jadwal_dokter) <= 0){ ?>
+                            <tr>
+                                <td class="text-center" colspan="4">Anda belum memiliki jadwal kerja.</td>
+                            </tr>
+                            <?php }else{ ?>
                             <?php $table_number = ++$curr_page?>
                             <?php foreach($list_jadwal_dokter as $jadwal_dokter){?>
                             <tr>
@@ -27,7 +32,7 @@
                                 <td><?= $jadwal_dokter->waktu_mulai?></td>
                                 <td><?= $jadwal_dokter->waktu_selesai?></td>
                         </tr>
-                            <?php }; ?>
+                        <?php }; }; ?>
                         </tbody>
                     </table>
                     <?php echo $pagination; ?> 

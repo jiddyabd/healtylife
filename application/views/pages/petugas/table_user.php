@@ -21,6 +21,11 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php if(count($list_user) <= 0){ ?>
+                            <tr>
+                                <td class="text-center" colspan="6">Immunihealth belum memiliki user.</td>
+                            </tr>
+                            <?php }else{ ?>
                             <?php $table_number = ++$curr_page?>
                             <?php foreach($list_user as $user){?>
                             <tr>
@@ -33,7 +38,7 @@
                                     <button data-toggle="modal" data-target="#hapus_user_modal_<?= $user->user_id ?>" class="btn btn-danger">Hapus</button>
                                 </td>
                             </tr>
-                            <?php }; ?>
+                            <?php }; }; ?>
                         </tbody>
                     </table>
                     <?php echo $pagination; ?> 

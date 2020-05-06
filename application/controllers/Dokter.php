@@ -65,7 +65,7 @@ class Dokter extends Core_Controller {
         //Paginate
         $items_per_page = 10;
         $data['curr_page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-        $this->paginate('dokter/jadwal_dokter'.$dokter_id, $items_per_page, $this->Jadwal_model->count_all());
+        $this->paginate('dokter/jadwal_dokter'.$dokter_id, $items_per_page, $this->Jadwal_model->count_list_by_dokter_id($this->get_user_id()));
         $data['list_jadwal_dokter'] = $this->Jadwal_model->get_list_by_dokter_id($dokter_id, $items_per_page, $data['curr_page']);
         $data['pagination'] = $this->pagination->create_links();
         //End Paginate
@@ -90,6 +90,51 @@ class Dokter extends Core_Controller {
         $this->view_page = DIR_DOKTER_PAGES.'/riwayat_kerja';
         $this->show_layout(LOGGEDIN_LAYOUT, $data);
 
+    }
+
+    
+    public function edit_profile(){
+        $this->view_title = 'My Profile';
+        $this->view_page = DIR_DOKTER_PAGES.'/edit_profile';
+        $this->show_layout(LOGGEDIN_LAYOUT);
+    }
+
+    public function submit_edit_profile(){
+        if(($this->input->post('password') != null || $this->input->post('password') != '') || $this->input->post('cpassword') != null || $this->input->post('cpassword') != ''){
+            if(strlen($this->input->post('password')) < 8){
+                $this->show_error_toast('Password anda harus lebih dari 8 karakter');
+                redirect('user/edit_profile');
+            }
+            if($this->input->post('password') != $this->input->post('cpassword')){
+                $this->show_error_toast('Kolom password dan konfirmasi harus sama');
+                redirect('user/edit_profile');
+            }
+            $data_profile = array(
+                "nama_dokter" => $this->input->post('user_name'),
+                "password" => $this->input->post('password')
+            );
+        }else{
+            $data_profile = array(
+                "nama_dokter" => $this->input->post('user_name')
+            );
+        }
+
+        $is_success = $this->Dokter_model->update($data_profile, $this->get_user_id());
+        if($is_success){
+            //Update session
+            $user_session_data = array(
+                "id" => $this->get_user_id(),
+                "nama" => $this->input->post('user_name'),
+                "role" => DOKTER,
+            );
+            $this->session->set_userdata("user_session", $user_session_data);
+
+            $this->show_success_toast('Berhasil mengupdate data profile anda.');
+        }else{
+            $this->show_error_toast('Gagal mengupdate data profile anda');
+        }
+        
+        redirect('dokter/edit_profile');
     }
     
     public function logout(){

@@ -393,6 +393,22 @@ class Petugas extends Core_Controller {
             "password" => $this->input->post('password')
         );
 
+        //Validation
+        if(strlen($this->input->post('password')) < 8){
+            $this->show_error_toast('Password petugas harus lebih dari 7 karakter');
+            redirect('petugas/view_petugas');
+        }
+
+        if(strlen($this->input->post('petugas_id')) < 6){
+            $this->show_error_toast('Id petugas harus lebih dari 6 karakter');
+            redirect('petugas/view_petugas');
+        }
+
+        if($this->input->post('password') != $this->input->post('cpassword')){
+            $this->show_error_toast('Kolom password dan konfirmasi harus sama');
+            redirect('petugas/view_petugas');
+        }
+
         $is_success = $this->Petugas_model->insert($data_petugas);
         if($is_success){
             $this->show_success_toast('Berhasil menambah data petugas.');
@@ -436,6 +452,49 @@ class Petugas extends Core_Controller {
     }
     //End daftar petugas
 
+    public function edit_profile(){
+        $this->view_title = 'My Profile';
+        $this->view_page = DIR_PETUGAS_PAGES.'/edit_profile';
+        $this->show_layout(LOGGEDIN_LAYOUT);
+    }
+
+    public function submit_edit_profile(){
+        if($this->input->post('password') != null || $this->input->post('password') != ''){
+            if(strlen($this->input->post('password')) < 8){
+                $this->show_error_toast('Password anda harus lebih dari 8 karakter');
+                redirect('petugas/edit_profile');
+            }
+            if($this->input->post('password') != $this->input->post('cpassword')){
+                $this->show_error_toast('Kolom password dan konfirmasi harus sama');
+                redirect('petugas/edit_profile');
+            }
+            $data_profile = array(
+                "nama_petugas" => $this->input->post('user_name'),
+                "password" => $this->input->post('password'),
+            );
+        }else{
+            $data_profile = array(
+                "nama_petugas" => $this->input->post('user_name')
+            );
+        }
+
+        $is_success = $this->Petugas_model->update($data_profile, $this->get_user_id());
+        if($is_success){
+            //Update session
+            $user_session_data = array(
+                "id" => $this->get_user_id(),
+                "nama" => $this->input->post('user_name'),
+                "role" => PETUGAS,
+            );
+            $this->session->set_userdata("user_session", $user_session_data);
+
+            $this->show_success_toast('Berhasil mengupdate data profile anda.');
+        }else{
+            $this->show_error_toast('Gagal mengupdate data profile anda');
+        }
+        
+        redirect('petugas/edit_profile');
+    }
 
     public function logout(){
         $this->session->unset_userdata('user_session');

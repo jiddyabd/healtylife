@@ -1,85 +1,70 @@
-<?php
-    $data_user = $this->session->userdata("datauser");
-    $nama = $data_user["nama_pasien"];
-?>
-
 <div class="row">
-  <div class="col-lg-12">
-    <div class="profile-header" style ="background-color: #183c12">
-      <img class="foto" src="<?= base_url();?>assets/gambar/<?= $data_user['foto'] ?>">
-    </div>
-  </div>
-</div>
-
-<div class="container" style="margin-top:20px;">
-    <div class="row mt-3">
-        <div class="col">
+    <!-- Edit Profile -->
+    <div class="col-md-8">
+        <div class="card-container">
+            <form action="<?=base_url('pasien/submit_edit_profile')?>" method="post">
             <div class="card">
-                <div class="card-header text-center">
-                    <h4><b>Profil Pasien</b></h4>
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <b>Edit Profile</b>
+                        <div>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-2">
-                            Nama
+                    <h6 class="card-title form-divide-title">USER INFORMATION</h6>
+                    <p class="card-text">
+                      <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail4">Id</label>
+                                <input disabled type="text" value="<?=$_user_id?>" class="form-control">
+                            </div>
                         </div>
-                        <div class="col-lg-10">
-                            : <?php echo $data_user['nama_pasien'] ?>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail4">Nama</label>
+                                <input name="user_name"  type="text" required value="<?=$_user_name?>" class="form-control">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-2">
-                            Username
+                      </div>
+                      <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail4">Email</label>
+                                <input value="<?=$user->email?>" name="email" required type="email" class="form-control">
+                            </div>
                         </div>
-                        <div class="col-lg-10">
-                            : <?php echo $data_user['username'] ?>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail4">Nomor Telepon</label>
+                                <input value="<?=$user->no_telp?>"name="no_telp" required type="text" value="<?=$_user_name?>" class="form-control">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-2">
-                            Email
+                      </div>
+                    </p>
+
+                    <hr>
+
+                    <h6 class="card-title form-divide-title">GANTI PASSWORD</h6>
+                    <p class="card-text">
+                      <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputPassword4">Password</label>
+                                <input type="password" placeholder="Masukan Password (min 8 karakter)" class="form-control" name="cpassword">
+                            </div>
                         </div>
-                        <div class="col-lg-10">
-                            : <?php echo $data_user['email'] ?>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputPassword4">Confirm Password</label>
+                                <input type="password" placeholder="Masukan Password (min 8 karakter)" class="form-control" name="password">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-2">
-                            Jenis Kelamin
-                        </div>
-                        <div class="col-lg-8">
-                            : <?php echo $data_user['jenis_kelamin'] ?>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-2">
-                            Tanggal Lahir
-                        </div>
-                        <div class="col-lg-10">
-                            : <?php echo $data_user['birthday'] ?>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-2">
-                            No Telepon
-                        </div>
-                        <div class="col-lg-10">
-                            : <?php echo $data_user['no_telepon'] ?>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-2">
-                            Alamat
-                        </div>
-                        <div class="col-lg-10">
-                            : <?php echo $data_user['alamat'] ?>
-                        </div>
-                        <div class="col-lg-12">
-                            <a href="<?= base_url()?>pasien/ubahProfil/<?= $data_user['id_pasien'] ?>">
-                                <button class="btn btn-primary float-right">Edit Profil</button>
-                            </a>
-                        </div>
-                    </div>
+                      </div>
+                    </p>
+                  </form>
                 </div>
             </div>
         </div>

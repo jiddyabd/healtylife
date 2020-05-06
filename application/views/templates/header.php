@@ -20,12 +20,12 @@
                 </a>
             </div>
         </li> -->
-        <li class="nav-item dropdown">
+        <li style="z-index:1000" class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 <?= $_user_name?>
             </a>
             <div class="dropdown-menu dropdown-menu-right ">
-                <a class="dropdown-item" href="#">
+                <a href="<?= base_url($_user_role.'/edit_profile')?>" class="dropdown-item" href="#">
                     My profile
                 </a>
                 <!-- <a class="dropdown-item" href="#">
